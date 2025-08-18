@@ -7,7 +7,6 @@ import dsl4dataspaces.dsl4dataspaces._parser.DSL4DataspacesParser;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
