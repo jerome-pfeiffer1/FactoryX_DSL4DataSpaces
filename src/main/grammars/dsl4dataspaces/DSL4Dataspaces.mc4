@@ -1,0 +1,100 @@
+package dsl4dataspaces;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+
+grammar DSL4Dataspaces extends MCBasicTypes, MCJavaLiterals {
+
+    DataSpaceConnectorConfiguration =
+        "DataSpaceConnectorConfiguration" "{" 
+            ConfigurationElements+
+        "}";
+
+    interface ConfigurationElements;
+
+    IdentificationData implements ConfigurationElements =
+        "IdentificationData" "{"
+            "linkedAssetID" "=" StringLiteral ";"
+            "baseUrl" "=" StringLiteral ";"
+            "endpoint" "=" StringLiteral ";"
+            "idType" "=" StringLiteral ";"
+        "}";
+
+    AssetMetaData implements ConfigurationElements =
+        "AssetMetaData" "{"
+            "title" "=" StringLiteral ";"
+            "description" "=" StringLiteral ";"
+            "publisher" "=" StringLiteral ";"
+            "sidiCode" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            "version" "=" StringLiteral ";"
+            "created" "=" StringLiteral ";"
+            "modified" "=" StringLiteral ";"
+            "language" "=" StringLiteral ";"
+        "}";
+
+    interface Usage extends ConfigurationElements;
+
+    BaseUsage implements Usage =
+        "Usage" "{"
+            "baseUrl" "=" StringLiteral ";"
+            "endpoint" "=" StringLiteral ";"
+            "dataAddress" "=" StringLiteral ";"
+            "dataSchemaAddress" "=" StringLiteral ";"
+        "}";
+
+
+    OPCUAUsage implements Usage =
+        "OPCUAUsage" "{"
+            "supportedProtocols" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            ("qosMetrics" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";")?
+            "securityPolicy" "=" StringLiteral ";"
+            "securityMode" "=" StringLiteral ";"
+            "authenticationMode" "=" StringLiteral ";"
+        "}";
+
+    EDCUsage implements Usage =
+        "EDCUsage" "{"
+            "remoteAddress" "=" StringLiteral ";"
+            "remoteID" "=" StringLiteral ";"
+            "xAPIKey" "=" StringLiteral ";"
+            "stsServiceAddress" "=" StringLiteral ";"
+            "trustedDIDRegistries" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            EDCPushEndpointsConfig
+        "}";
+
+    EDCPushEndpointsConfig =
+        "EDCPushEndpointsConfig" "{"
+            "cloudPush" "=" "{" (StringLiteral "=" StringLiteral ("," StringLiteral "=" StringLiteral)*)? "}" ";"
+            "callBackAddress" "=" StringLiteral ";"
+        "}";
+
+    AccessPolicy implements ConfigurationElements =
+        "AccessPolicy" "{"
+            "usagePolicy" "=" StringLiteral ";"
+            "contractOffer" "=" "{" (StringLiteral "=" StringLiteral ("," StringLiteral "=" StringLiteral)*)? "}" ";"
+            "accessControl" "=" "[" Role ("," Role)* "]" ";"
+        "}";
+
+    Role =
+        "Role" "{"
+            "roleName" "=" StringLiteral ";"
+            "permissions" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+        "}";
+
+    IdentityProviderConfig implements ConfigurationElements =
+        "IdentityProviderConfig" "{"
+            "idpEndpoint" "=" StringLiteral ";"
+            "clientId" "=" StringLiteral ";"
+            "secret" "=" StringLiteral ";"
+            "grantType" "=" StringLiteral ";"
+        "}";
+
+    OAuthInfo implements ConfigurationElements =
+        "OAuthInfo" "{"
+            "id" "=" StringLiteral ";"
+            "secret" "=" StringLiteral ";"
+            "grantType" "=" StringLiteral ";"
+            "scope" "=" StringLiteral ";"
+        "}";
+
+}
