@@ -6,7 +6,7 @@ import de.monticore.literals.*;
 grammar DSL4Dataspaces extends MCBasicTypes, MCJavaLiterals {
 
     DataSpaceConnectorConfiguration =
-        "DataSpaceConnectorConfiguration" "{" 
+        "DataSpaceConnectorConfiguration" Name "{"
             ConfigurationElements+
         "}";
 
