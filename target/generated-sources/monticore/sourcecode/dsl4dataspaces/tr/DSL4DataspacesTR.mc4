@@ -1,0 +1,676 @@
+package dsl4dataspaces.tr;
+
+grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.monticore.literals.tr.MCJavaLiteralsTR {
+  DSL4DataspacesTFRule =
+    TFRule;
+
+  OAuthInfo_Rep implements ITFOAuthInfo, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFOAuthInfo? ReplacementOp rhs:ITFOAuthInfo? "]]");
+
+  OAuthInfo_Pat implements ITFOAuthInfo, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "OAuthInfo" schemaVarName:Name | ("OAuthInfo" "{" "id" "=" stringLiteral:ITFStringLiteral ";" "secret" "=" stringLiteral:ITFStringLiteral ";" "grantType" "=" stringLiteral:ITFStringLiteral ";" "scope" "=" stringLiteral:ITFStringLiteral ";" "}") | (("OAuthInfo"? schemaVarName:Name| "OAuthInfo" schemaVarName:Name?) "[[" ("OAuthInfo" "{" "id" "=" stringLiteral:ITFStringLiteral ";" "secret" "=" stringLiteral:ITFStringLiteral ";" "grantType" "=" stringLiteral:ITFStringLiteral ";" "scope" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  OAuthInfo_Neg implements ITFOAuthInfo, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" oAuthInfo:ITFOAuthInfo "]]";
+
+  OAuthInfo_Opt implements ITFOAuthInfo, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" oAuthInfo:ITFOAuthInfo "]]";
+
+  OAuthInfo_List implements ITFOAuthInfo, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IList =
+    "list" ("<OAuthInfo>")? schemaVarName:Name? "[[" oAuthInfo:OAuthInfo_Pat "]]";
+
+  IdentityProviderConfig_Rep implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFIdentityProviderConfig? ReplacementOp rhs:ITFIdentityProviderConfig? "]]");
+
+  IdentityProviderConfig_Pat implements ITFIdentityProviderConfig, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "IdentityProviderConfig" schemaVarName:Name | ("IdentityProviderConfig" "{" "idpEndpoint" "=" stringLiteral:ITFStringLiteral ";" "clientId" "=" stringLiteral:ITFStringLiteral ";" "secret" "=" stringLiteral:ITFStringLiteral ";" "grantType" "=" stringLiteral:ITFStringLiteral ";" "}") | (("IdentityProviderConfig"? schemaVarName:Name| "IdentityProviderConfig" schemaVarName:Name?) "[[" ("IdentityProviderConfig" "{" "idpEndpoint" "=" stringLiteral:ITFStringLiteral ";" "clientId" "=" stringLiteral:ITFStringLiteral ";" "secret" "=" stringLiteral:ITFStringLiteral ";" "grantType" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  IdentityProviderConfig_Neg implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" identityProviderConfig:ITFIdentityProviderConfig "]]";
+
+  IdentityProviderConfig_Opt implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" identityProviderConfig:ITFIdentityProviderConfig "]]";
+
+  IdentityProviderConfig_List implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IList =
+    "list" ("<IdentityProviderConfig>")? schemaVarName:Name? "[[" identityProviderConfig:IdentityProviderConfig_Pat "]]";
+
+  Role_Rep implements ITFRole, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFRole? ReplacementOp rhs:ITFRole? "]]");
+
+  Role_Pat implements ITFRole, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "Role" schemaVarName:Name | ("Role" "{" "roleName" "=" stringLiteral:ITFStringLiteral ";" "permissions" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "}") | (("Role"? schemaVarName:Name| "Role" schemaVarName:Name?) "[[" ("Role" "{" "roleName" "=" stringLiteral:ITFStringLiteral ";" "permissions" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "}") "]]");
+
+  Role_Neg implements ITFRole, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" role:ITFRole "]]";
+
+  Role_Opt implements ITFRole, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" role:ITFRole "]]";
+
+  Role_List implements ITFRole, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
+    "list" ("<Role>")? schemaVarName:Name? "[[" role:Role_Pat "]]";
+
+  AccessPolicy_Rep implements ITFAccessPolicy, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFAccessPolicy? ReplacementOp rhs:ITFAccessPolicy? "]]");
+
+  AccessPolicy_Pat implements ITFAccessPolicy, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "AccessPolicy" schemaVarName:Name | ("AccessPolicy" "{" "usagePolicy" "=" stringLiteral:ITFStringLiteral ";" "contractOffer" "=" "{" (stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "accessControl" "=" "[" role:ITFRole ("," role:ITFRole)* "]" ";" "}") | (("AccessPolicy"? schemaVarName:Name| "AccessPolicy" schemaVarName:Name?) "[[" ("AccessPolicy" "{" "usagePolicy" "=" stringLiteral:ITFStringLiteral ";" "contractOffer" "=" "{" (stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "accessControl" "=" "[" role:ITFRole ("," role:ITFRole)* "]" ";" "}") "]]");
+
+  AccessPolicy_Neg implements ITFAccessPolicy, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" accessPolicy:ITFAccessPolicy "]]";
+
+  AccessPolicy_Opt implements ITFAccessPolicy, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" accessPolicy:ITFAccessPolicy "]]";
+
+  AccessPolicy_List implements ITFAccessPolicy, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IList =
+    "list" ("<AccessPolicy>")? schemaVarName:Name? "[[" accessPolicy:AccessPolicy_Pat "]]";
+
+  EDCPushEndpointsConfig_Rep implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFEDCPushEndpointsConfig? ReplacementOp rhs:ITFEDCPushEndpointsConfig? "]]");
+
+  EDCPushEndpointsConfig_Pat implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "EDCPushEndpointsConfig" schemaVarName:Name | ("EDCPushEndpointsConfig" "{" "cloudPush" "=" "{" (stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "callBackAddress" "=" stringLiteral:ITFStringLiteral ";" "}") | (("EDCPushEndpointsConfig"? schemaVarName:Name| "EDCPushEndpointsConfig" schemaVarName:Name?) "[[" ("EDCPushEndpointsConfig" "{" "cloudPush" "=" "{" (stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "callBackAddress" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  EDCPushEndpointsConfig_Neg implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig "]]";
+
+  EDCPushEndpointsConfig_Opt implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig "]]";
+
+  EDCPushEndpointsConfig_List implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
+    "list" ("<EDCPushEndpointsConfig>")? schemaVarName:Name? "[[" eDCPushEndpointsConfig:EDCPushEndpointsConfig_Pat "]]";
+
+  EDCUsage_Rep implements ITFEDCUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFEDCUsage? ReplacementOp rhs:ITFEDCUsage? "]]");
+
+  EDCUsage_Pat implements ITFEDCUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "EDCUsage" schemaVarName:Name | ("EDCUsage" "{" "remoteAddress" "=" stringLiteral:ITFStringLiteral ";" "remoteID" "=" stringLiteral:ITFStringLiteral ";" "xAPIKey" "=" stringLiteral:ITFStringLiteral ";" "stsServiceAddress" "=" stringLiteral:ITFStringLiteral ";" "trustedDIDRegistries" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig "}") | (("EDCUsage"? schemaVarName:Name| "EDCUsage" schemaVarName:Name?) "[[" ("EDCUsage" "{" "remoteAddress" "=" stringLiteral:ITFStringLiteral ";" "remoteID" "=" stringLiteral:ITFStringLiteral ";" "xAPIKey" "=" stringLiteral:ITFStringLiteral ";" "stsServiceAddress" "=" stringLiteral:ITFStringLiteral ";" "trustedDIDRegistries" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig "}") "]]");
+
+  EDCUsage_Neg implements ITFEDCUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" eDCUsage:ITFEDCUsage "]]";
+
+  EDCUsage_Opt implements ITFEDCUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" eDCUsage:ITFEDCUsage "]]";
+
+  EDCUsage_List implements ITFEDCUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IList =
+    "list" ("<EDCUsage>")? schemaVarName:Name? "[[" eDCUsage:EDCUsage_Pat "]]";
+
+  OPCUAUsage_Rep implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFOPCUAUsage? ReplacementOp rhs:ITFOPCUAUsage? "]]");
+
+  OPCUAUsage_Pat implements ITFOPCUAUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "OPCUAUsage" schemaVarName:Name | ("OPCUAUsage" "{" "supportedProtocols" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" ("qosMetrics" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";")? "securityPolicy" "=" stringLiteral:ITFStringLiteral ";" "securityMode" "=" stringLiteral:ITFStringLiteral ";" "authenticationMode" "=" stringLiteral:ITFStringLiteral ";" "}") | (("OPCUAUsage"? schemaVarName:Name| "OPCUAUsage" schemaVarName:Name?) "[[" ("OPCUAUsage" "{" "supportedProtocols" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" ("qosMetrics" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";")? "securityPolicy" "=" stringLiteral:ITFStringLiteral ";" "securityMode" "=" stringLiteral:ITFStringLiteral ";" "authenticationMode" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  OPCUAUsage_Neg implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" oPCUAUsage:ITFOPCUAUsage "]]";
+
+  OPCUAUsage_Opt implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" oPCUAUsage:ITFOPCUAUsage "]]";
+
+  OPCUAUsage_List implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IList =
+    "list" ("<OPCUAUsage>")? schemaVarName:Name? "[[" oPCUAUsage:OPCUAUsage_Pat "]]";
+
+  BaseUsage_Rep implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFBaseUsage? ReplacementOp rhs:ITFBaseUsage? "]]");
+
+  BaseUsage_Pat implements ITFBaseUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "BaseUsage" schemaVarName:Name | ("Usage" "{" "baseUrl" "=" stringLiteral:ITFStringLiteral ";" "endpoint" "=" stringLiteral:ITFStringLiteral ";" "dataAddress" "=" stringLiteral:ITFStringLiteral ";" "dataSchemaAddress" "=" stringLiteral:ITFStringLiteral ";" "}") | (("BaseUsage"? schemaVarName:Name| "BaseUsage" schemaVarName:Name?) "[[" ("Usage" "{" "baseUrl" "=" stringLiteral:ITFStringLiteral ";" "endpoint" "=" stringLiteral:ITFStringLiteral ";" "dataAddress" "=" stringLiteral:ITFStringLiteral ";" "dataSchemaAddress" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  BaseUsage_Neg implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" baseUsage:ITFBaseUsage "]]";
+
+  BaseUsage_Opt implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" baseUsage:ITFBaseUsage "]]";
+
+  BaseUsage_List implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IList =
+    "list" ("<BaseUsage>")? schemaVarName:Name? "[[" baseUsage:BaseUsage_Pat "]]";
+
+  AssetMetaData_Rep implements ITFAssetMetaData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFAssetMetaData? ReplacementOp rhs:ITFAssetMetaData? "]]");
+
+  AssetMetaData_Pat implements ITFAssetMetaData, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "AssetMetaData" schemaVarName:Name | ("AssetMetaData" "{" "title" "=" stringLiteral:ITFStringLiteral ";" "description" "=" stringLiteral:ITFStringLiteral ";" "publisher" "=" stringLiteral:ITFStringLiteral ";" "sidiCode" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "version" "=" stringLiteral:ITFStringLiteral ";" "created" "=" stringLiteral:ITFStringLiteral ";" "modified" "=" stringLiteral:ITFStringLiteral ";" "language" "=" stringLiteral:ITFStringLiteral ";" "}") | (("AssetMetaData"? schemaVarName:Name| "AssetMetaData" schemaVarName:Name?) "[[" ("AssetMetaData" "{" "title" "=" stringLiteral:ITFStringLiteral ";" "description" "=" stringLiteral:ITFStringLiteral ";" "publisher" "=" stringLiteral:ITFStringLiteral ";" "sidiCode" "=" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "version" "=" stringLiteral:ITFStringLiteral ";" "created" "=" stringLiteral:ITFStringLiteral ";" "modified" "=" stringLiteral:ITFStringLiteral ";" "language" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  AssetMetaData_Neg implements ITFAssetMetaData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" assetMetaData:ITFAssetMetaData "]]";
+
+  AssetMetaData_Opt implements ITFAssetMetaData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" assetMetaData:ITFAssetMetaData "]]";
+
+  AssetMetaData_List implements ITFAssetMetaData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IList =
+    "list" ("<AssetMetaData>")? schemaVarName:Name? "[[" assetMetaData:AssetMetaData_Pat "]]";
+
+  IdentificationData_Rep implements ITFIdentificationData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFIdentificationData? ReplacementOp rhs:ITFIdentificationData? "]]");
+
+  IdentificationData_Pat implements ITFIdentificationData, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "IdentificationData" schemaVarName:Name | ("IdentificationData" "{" "linkedAssetID" "=" stringLiteral:ITFStringLiteral ";" "baseUrl" "=" stringLiteral:ITFStringLiteral ";" "endpoint" "=" stringLiteral:ITFStringLiteral ";" "idType" "=" stringLiteral:ITFStringLiteral ";" "}") | (("IdentificationData"? schemaVarName:Name| "IdentificationData" schemaVarName:Name?) "[[" ("IdentificationData" "{" "linkedAssetID" "=" stringLiteral:ITFStringLiteral ";" "baseUrl" "=" stringLiteral:ITFStringLiteral ";" "endpoint" "=" stringLiteral:ITFStringLiteral ";" "idType" "=" stringLiteral:ITFStringLiteral ";" "}") "]]");
+
+  IdentificationData_Neg implements ITFIdentificationData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" identificationData:ITFIdentificationData "]]";
+
+  IdentificationData_Opt implements ITFIdentificationData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" identificationData:ITFIdentificationData "]]";
+
+  IdentificationData_List implements ITFIdentificationData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.IList =
+    "list" ("<IdentificationData>")? schemaVarName:Name? "[[" identificationData:IdentificationData_Pat "]]";
+
+  DataSpaceConnectorConfiguration_Rep implements ITFDataSpaceConnectorConfiguration, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFDataSpaceConnectorConfiguration? ReplacementOp rhs:ITFDataSpaceConnectorConfiguration? "]]");
+
+  DataSpaceConnectorConfiguration_Pat implements ITFDataSpaceConnectorConfiguration, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "DataSpaceConnectorConfiguration" schemaVarName:Name | ("DataSpaceConnectorConfiguration" name:TfIdentifierName "{" configurationElements:ITFConfigurationElements+ "}") | (("DataSpaceConnectorConfiguration"? schemaVarName:Name| "DataSpaceConnectorConfiguration" schemaVarName:Name?) "[[" ("DataSpaceConnectorConfiguration" name:TfIdentifierName "{" configurationElements:ITFConfigurationElements+ "}") "]]");
+
+  DataSpaceConnectorConfiguration_Neg implements ITFDataSpaceConnectorConfiguration, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" dataSpaceConnectorConfiguration:ITFDataSpaceConnectorConfiguration "]]";
+
+  DataSpaceConnectorConfiguration_Opt implements ITFDataSpaceConnectorConfiguration, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" dataSpaceConnectorConfiguration:ITFDataSpaceConnectorConfiguration "]]";
+
+  DataSpaceConnectorConfiguration_List implements ITFDataSpaceConnectorConfiguration, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
+    "list" ("<DataSpaceConnectorConfiguration>")? schemaVarName:Name? "[[" dataSpaceConnectorConfiguration:DataSpaceConnectorConfiguration_Pat "]]";
+
+   /* do not generate a builder for me */ 
+  ConfigurationElements_Pat implements ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "ConfigurationElements" schemaVarName:Name | "ConfigurationElements" schemaVarName:Name? "[[" configurationElements:ITFConfigurationElements "]]";
+
+  ConfigurationElements_Rep implements ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFConfigurationElements? ReplacementOp rhs:ITFConfigurationElements? "]]");
+
+  ConfigurationElements_Neg implements ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" configurationElements:ITFConfigurationElements "]]";
+
+  ConfigurationElements_List implements ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
+    "list" ("<ConfigurationElements>")? schemaVarName:Name? "[[" configurationElements:ConfigurationElements_Pat "]]";
+
+  ConfigurationElements_Opt implements ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" configurationElements:ITFConfigurationElements "]]";
+
+   /* do not generate a builder for me */ 
+  Usage_Pat implements ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "Usage" schemaVarName:Name | "Usage" schemaVarName:Name? "[[" usage:ITFUsage "]]";
+
+  Usage_Rep implements ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
+    ("[[" lhs:ITFUsage? ReplacementOp rhs:ITFUsage? "]]");
+
+  Usage_Neg implements ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
+    "not" "[[" usage:ITFUsage "]]";
+
+  Usage_List implements ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
+    "list" ("<Usage>")? schemaVarName:Name? "[[" usage:Usage_Pat "]]";
+
+  Usage_Opt implements ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
+    "opt" "[[" usage:ITFUsage "]]";
+
+  interface ITFDataSpaceConnectorConfiguration astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFIdentificationData extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFAssetMetaData extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFBaseUsage extends ITFUsage astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFOPCUAUsage extends ITFUsage astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFEDCUsage extends ITFUsage astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFEDCPushEndpointsConfig astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFAccessPolicy extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFRole astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFIdentityProviderConfig extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  interface ITFOAuthInfo extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  /* NO extends IDSL4DataspacesTFPart<?> */
+  interface ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  /* NO extends IDSL4DataspacesTFPart<?> */
+  interface ITFUsage extends ITFConfigurationElements astextends de.monticore.tf.ast.ITFElement;
+
+  interface IDSL4DataspacesTFPart extends ITFPart;
+
+  astrule DataSpaceConnectorConfiguration_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTDataSpaceConnectorConfiguration.class;
+    }
+    method public ASTITFDataSpaceConnectorConfiguration getTFElement() {
+      return getDataSpaceConnectorConfiguration();
+    }
+  ;
+  astrule DataSpaceConnectorConfiguration_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTDataSpaceConnectorConfiguration.class;
+    }
+    method public ASTITFDataSpaceConnectorConfiguration getTFElement() {
+      return getDataSpaceConnectorConfiguration();
+    }
+  ;
+  astrule DataSpaceConnectorConfiguration_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTDataSpaceConnectorConfiguration.class;
+    }
+  ;
+  astrule DataSpaceConnectorConfiguration_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTDataSpaceConnectorConfiguration.class;
+    }
+    method public ASTITFDataSpaceConnectorConfiguration getTFElement() {
+      return getDataSpaceConnectorConfiguration();
+    }
+  ;
+  astrule DataSpaceConnectorConfiguration_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTDataSpaceConnectorConfiguration.class;
+    }
+  ;
+  astrule IdentificationData_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentificationData.class;
+    }
+    method public ASTITFIdentificationData getTFElement() {
+      return getIdentificationData();
+    }
+  ;
+  astrule IdentificationData_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentificationData.class;
+    }
+    method public ASTITFIdentificationData getTFElement() {
+      return getIdentificationData();
+    }
+  ;
+  astrule IdentificationData_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentificationData.class;
+    }
+  ;
+  astrule IdentificationData_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentificationData.class;
+    }
+    method public ASTITFIdentificationData getTFElement() {
+      return getIdentificationData();
+    }
+  ;
+  astrule IdentificationData_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentificationData.class;
+    }
+  ;
+  astrule AssetMetaData_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData.class;
+    }
+    method public ASTITFAssetMetaData getTFElement() {
+      return getAssetMetaData();
+    }
+  ;
+  astrule AssetMetaData_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData.class;
+    }
+    method public ASTITFAssetMetaData getTFElement() {
+      return getAssetMetaData();
+    }
+  ;
+  astrule AssetMetaData_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData.class;
+    }
+  ;
+  astrule AssetMetaData_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData.class;
+    }
+    method public ASTITFAssetMetaData getTFElement() {
+      return getAssetMetaData();
+    }
+  ;
+  astrule AssetMetaData_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData.class;
+    }
+  ;
+  astrule BaseUsage_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage.class;
+    }
+    method public ASTITFBaseUsage getTFElement() {
+      return getBaseUsage();
+    }
+  ;
+  astrule BaseUsage_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage.class;
+    }
+    method public ASTITFBaseUsage getTFElement() {
+      return getBaseUsage();
+    }
+  ;
+  astrule BaseUsage_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage.class;
+    }
+  ;
+  astrule BaseUsage_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage.class;
+    }
+    method public ASTITFBaseUsage getTFElement() {
+      return getBaseUsage();
+    }
+  ;
+  astrule BaseUsage_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage.class;
+    }
+  ;
+  astrule OPCUAUsage_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOPCUAUsage.class;
+    }
+    method public ASTITFOPCUAUsage getTFElement() {
+      return getOPCUAUsage();
+    }
+  ;
+  astrule OPCUAUsage_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOPCUAUsage.class;
+    }
+    method public ASTITFOPCUAUsage getTFElement() {
+      return getOPCUAUsage();
+    }
+  ;
+  astrule OPCUAUsage_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOPCUAUsage.class;
+    }
+  ;
+  astrule OPCUAUsage_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOPCUAUsage.class;
+    }
+    method public ASTITFOPCUAUsage getTFElement() {
+      return getOPCUAUsage();
+    }
+  ;
+  astrule OPCUAUsage_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOPCUAUsage.class;
+    }
+  ;
+  astrule EDCUsage_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCUsage.class;
+    }
+    method public ASTITFEDCUsage getTFElement() {
+      return getEDCUsage();
+    }
+  ;
+  astrule EDCUsage_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCUsage.class;
+    }
+    method public ASTITFEDCUsage getTFElement() {
+      return getEDCUsage();
+    }
+  ;
+  astrule EDCUsage_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCUsage.class;
+    }
+  ;
+  astrule EDCUsage_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCUsage.class;
+    }
+    method public ASTITFEDCUsage getTFElement() {
+      return getEDCUsage();
+    }
+  ;
+  astrule EDCUsage_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCUsage.class;
+    }
+  ;
+  astrule EDCPushEndpointsConfig_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig.class;
+    }
+    method public ASTITFEDCPushEndpointsConfig getTFElement() {
+      return getEDCPushEndpointsConfig();
+    }
+  ;
+  astrule EDCPushEndpointsConfig_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig.class;
+    }
+    method public ASTITFEDCPushEndpointsConfig getTFElement() {
+      return getEDCPushEndpointsConfig();
+    }
+  ;
+  astrule EDCPushEndpointsConfig_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig.class;
+    }
+  ;
+  astrule EDCPushEndpointsConfig_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig.class;
+    }
+    method public ASTITFEDCPushEndpointsConfig getTFElement() {
+      return getEDCPushEndpointsConfig();
+    }
+  ;
+  astrule EDCPushEndpointsConfig_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig.class;
+    }
+  ;
+  astrule AccessPolicy_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy.class;
+    }
+    method public ASTITFAccessPolicy getTFElement() {
+      return getAccessPolicy();
+    }
+  ;
+  astrule AccessPolicy_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy.class;
+    }
+    method public ASTITFAccessPolicy getTFElement() {
+      return getAccessPolicy();
+    }
+  ;
+  astrule AccessPolicy_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy.class;
+    }
+  ;
+  astrule AccessPolicy_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy.class;
+    }
+    method public ASTITFAccessPolicy getTFElement() {
+      return getAccessPolicy();
+    }
+  ;
+  astrule AccessPolicy_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy.class;
+    }
+  ;
+  astrule Role_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTRole.class;
+    }
+    method public ASTITFRole getTFElement() {
+      return getRole();
+    }
+  ;
+  astrule Role_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTRole.class;
+    }
+    method public ASTITFRole getTFElement() {
+      return getRole();
+    }
+  ;
+  astrule Role_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTRole.class;
+    }
+  ;
+  astrule Role_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTRole.class;
+    }
+    method public ASTITFRole getTFElement() {
+      return getRole();
+    }
+  ;
+  astrule Role_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTRole.class;
+    }
+  ;
+  astrule IdentityProviderConfig_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig.class;
+    }
+    method public ASTITFIdentityProviderConfig getTFElement() {
+      return getIdentityProviderConfig();
+    }
+  ;
+  astrule IdentityProviderConfig_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig.class;
+    }
+    method public ASTITFIdentityProviderConfig getTFElement() {
+      return getIdentityProviderConfig();
+    }
+  ;
+  astrule IdentityProviderConfig_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig.class;
+    }
+  ;
+  astrule IdentityProviderConfig_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig.class;
+    }
+    method public ASTITFIdentityProviderConfig getTFElement() {
+      return getIdentityProviderConfig();
+    }
+  ;
+  astrule IdentityProviderConfig_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig.class;
+    }
+  ;
+  astrule OAuthInfo_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo.class;
+    }
+    method public ASTITFOAuthInfo getTFElement() {
+      return getOAuthInfo();
+    }
+  ;
+  astrule OAuthInfo_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo.class;
+    }
+    method public ASTITFOAuthInfo getTFElement() {
+      return getOAuthInfo();
+    }
+  ;
+  astrule OAuthInfo_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo.class;
+    }
+  ;
+  astrule OAuthInfo_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo.class;
+    }
+    method public ASTITFOAuthInfo getTFElement() {
+      return getOAuthInfo();
+    }
+  ;
+  astrule OAuthInfo_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo.class;
+    }
+  ;
+  astrule ConfigurationElements_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements.class;
+    }
+    method public ASTITFConfigurationElements getTFElement() {
+      return getConfigurationElements();
+    }
+  ;
+  astrule ConfigurationElements_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements.class;
+    }
+    method public ASTITFConfigurationElements getTFElement() {
+      return getConfigurationElements();
+    }
+  ;
+  astrule ConfigurationElements_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements.class;
+    }
+  ;
+  astrule ConfigurationElements_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements.class;
+    }
+    method public ASTITFConfigurationElements getTFElement() {
+      return getConfigurationElements();
+    }
+  ;
+  astrule ConfigurationElements_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements.class;
+    }
+  ;
+  astrule Usage_List = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTUsage.class;
+    }
+    method public ASTITFUsage getTFElement() {
+      return getUsage();
+    }
+  ;
+  astrule Usage_Neg = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTUsage.class;
+    }
+    method public ASTITFUsage getTFElement() {
+      return getUsage();
+    }
+  ;
+  astrule Usage_Pat = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTUsage.class;
+    }
+  ;
+  astrule Usage_Opt = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTUsage.class;
+    }
+    method public ASTITFUsage getTFElement() {
+      return getUsage();
+    }
+  ;
+  astrule Usage_Rep = 
+    method public Class _getTFElementType() {
+      return dsl4dataspaces.dsl4dataspaces._ast.ASTUsage.class;
+    }
+  ;
+}

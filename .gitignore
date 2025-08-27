@@ -19,6 +19,11 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-/target
 /.idea
 /.gradle
+# Ignore everything under target
+/target/*
+
+# But keep generated-sources and its contents
+!/target/generated-sources/
+!/target/generated-sources/**
