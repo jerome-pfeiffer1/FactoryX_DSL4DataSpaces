@@ -36,14 +36,59 @@ public class DSL4DataspacesParserInfoForMCBasicTypes extends EmptyMCBasicTypesPa
   protected boolean _stateHasUsageNameConfigurationElements(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameConfigurationElements(state);
   }
+  protected boolean _stateHasUsageNameAssetID(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameAssetID(state);
+  }
+  protected boolean _stateHasUsageNameBaseUrl(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameBaseUrl(state);
+  }
+  protected boolean _stateHasUsageNameEndpoint(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameEndpoint(state);
+  }
+  protected boolean _stateHasUsageNameAssetMetaData(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameAssetMetaData(state);
+  }
+  protected boolean _stateHasUsageNameTitle(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameTitle(state);
+  }
+  protected boolean _stateHasUsageNameDescription(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameDescription(state);
+  }
+  protected boolean _stateHasUsageNamePublisher(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNamePublisher(state);
+  }
   protected boolean _stateHasUsageNameStringLiteral(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameStringLiteral(state);
+  }
+  protected boolean _stateHasUsageNameCreated(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameCreated(state);
+  }
+  protected boolean _stateHasUsageNameModified(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameModified(state);
+  }
+  protected boolean _stateHasUsageNameDataAddress(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameDataAddress(state);
+  }
+  protected boolean _stateHasUsageNameSchemaAddress(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameSchemaAddress(state);
+  }
+  protected boolean _stateHasUsageNameAccessPolicy(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameAccessPolicy(state);
   }
   protected boolean _stateHasUsageNameEDCPushEndpointsConfig(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameEDCPushEndpointsConfig(state);
   }
+  protected boolean _stateHasUsageNameComplexName(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameComplexName(state);
+  }
   protected boolean _stateHasUsageNameRole(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameRole(state);
+  }
+  protected boolean _stateHasUsageNameIdentityProviderConfig(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameIdentityProviderConfig(state);
+  }
+  protected boolean _stateHasUsageNameOAuthInfo(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameOAuthInfo(state);
   }
 
   protected boolean _stateDefinesName(int state){

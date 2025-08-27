@@ -19,6 +19,22 @@ package dsl4dataspaces.dsl4dataspaces._ast;
  public   enum DSL4DataspacesLiterals
 {
 
+    DE
+(
+dsl4dataspaces.dsl4dataspaces._ast.ASTConstantsDSL4Dataspaces.DE)
+,
+    EN
+(
+dsl4dataspaces.dsl4dataspaces._ast.ASTConstantsDSL4Dataspaces.EN)
+,
+    NL
+(
+dsl4dataspaces.dsl4dataspaces._ast.ASTConstantsDSL4Dataspaces.NL)
+,
+    URI
+(
+dsl4dataspaces.dsl4dataspaces._ast.ASTConstantsDSL4Dataspaces.URI)
+
 ;
 
 /* Hookpoint: EnumContent:Elements */

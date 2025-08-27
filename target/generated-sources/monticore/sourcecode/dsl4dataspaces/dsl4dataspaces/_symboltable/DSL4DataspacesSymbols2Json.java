@@ -63,11 +63,11 @@ import de.se_rwth.commons.SourcePosition;
  {
   this(dsl4dataspaces.dsl4dataspaces.DSL4DataspacesMill.traverser(), new de.monticore.symboltable.serialization.JsonPrinter());
 traverser.add4DSL4Dataspaces(this);
-traverser.add4MCJavaLiterals(new de.monticore.literals.mcjavaliterals._symboltable.MCJavaLiteralsSymbols2Json(getTraverser(), getJsonPrinter()));
 traverser.add4MCBasicTypes(new de.monticore.types.mcbasictypes._symboltable.MCBasicTypesSymbols2Json(getTraverser(), getJsonPrinter()));
+traverser.add4MCJavaLiterals(new de.monticore.literals.mcjavaliterals._symboltable.MCJavaLiteralsSymbols2Json(getTraverser(), getJsonPrinter()));
+traverser.add4MCBasics(new de.monticore.mcbasics._symboltable.MCBasicsSymbols2Json(getTraverser(), getJsonPrinter()));
 traverser.add4MCCommonLiterals(new de.monticore.literals.mccommonliterals._symboltable.MCCommonLiteralsSymbols2Json(getTraverser(), getJsonPrinter()));
 traverser.add4MCLiteralsBasis(new de.monticore.literals.mcliteralsbasis._symboltable.MCLiteralsBasisSymbols2Json(getTraverser(), getJsonPrinter()));
-traverser.add4MCBasics(new de.monticore.mcbasics._symboltable.MCBasicsSymbols2Json(getTraverser(), getJsonPrinter()));
 
 }
 

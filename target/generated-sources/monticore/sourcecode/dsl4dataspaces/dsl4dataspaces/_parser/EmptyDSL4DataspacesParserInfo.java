@@ -71,7 +71,67 @@ public abstract class EmptyDSL4DataspacesParserInfo extends DSL4DataspacesParser
     }
 
     @Override
+    protected boolean _stateHasUsageNameAssetID(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameBaseUrl(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameEndpoint(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameAssetMetaData(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameTitle(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameDescription(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNamePublisher(int state){
+      return false;
+    }
+
+    @Override
     protected boolean _stateHasUsageNameStringLiteral(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameCreated(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameModified(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameDataAddress(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameSchemaAddress(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameAccessPolicy(int state){
       return false;
     }
 
@@ -81,7 +141,22 @@ public abstract class EmptyDSL4DataspacesParserInfo extends DSL4DataspacesParser
     }
 
     @Override
+    protected boolean _stateHasUsageNameComplexName(int state){
+      return false;
+    }
+
+    @Override
     protected boolean _stateHasUsageNameRole(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameIdentityProviderConfig(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameOAuthInfo(int state){
       return false;
     }
 

@@ -66,15 +66,15 @@ import de.se_rwth.commons.SourcePosition;
   this.globalScope = dsl4dataspaces.dsl4dataspaces.DSL4DataspacesMill.globalScope();
   this.traverser = dsl4dataspaces.dsl4dataspaces.DSL4DataspacesMill.traverser();
   this.scopeStack.push(this.globalScope);
-  de.monticore.literals.mcjavaliterals._symboltable.MCJavaLiteralsScopesGenitor mCJavaLiteralsScopesGenitor = de.monticore.literals.mcjavaliterals.MCJavaLiteralsMill.scopesGenitor();
-  mCJavaLiteralsScopesGenitor.setScopeStack(scopeStack);
-  traverser.add4MCJavaLiterals(mCJavaLiteralsScopesGenitor);
-  traverser.setMCJavaLiteralsHandler(mCJavaLiteralsScopesGenitor);
-
   de.monticore.types.mcbasictypes._symboltable.MCBasicTypesScopesGenitor mCBasicTypesScopesGenitor = de.monticore.types.mcbasictypes.MCBasicTypesMill.scopesGenitor();
   mCBasicTypesScopesGenitor.setScopeStack(scopeStack);
   traverser.add4MCBasicTypes(mCBasicTypesScopesGenitor);
   traverser.setMCBasicTypesHandler(mCBasicTypesScopesGenitor);
+
+  de.monticore.literals.mcjavaliterals._symboltable.MCJavaLiteralsScopesGenitor mCJavaLiteralsScopesGenitor = de.monticore.literals.mcjavaliterals.MCJavaLiteralsMill.scopesGenitor();
+  mCJavaLiteralsScopesGenitor.setScopeStack(scopeStack);
+  traverser.add4MCJavaLiterals(mCJavaLiteralsScopesGenitor);
+  traverser.setMCJavaLiteralsHandler(mCJavaLiteralsScopesGenitor);
 
   de.monticore.literals.mccommonliterals._symboltable.MCCommonLiteralsScopesGenitor mCCommonLiteralsScopesGenitor = de.monticore.literals.mccommonliterals.MCCommonLiteralsMill.scopesGenitor();
   mCCommonLiteralsScopesGenitor.setScopeStack(scopeStack);

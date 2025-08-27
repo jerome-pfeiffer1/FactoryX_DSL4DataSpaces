@@ -18,19 +18,34 @@ public class DSL4DataspacesParserInfo {
   // References
 
   // Usage names
-  protected static Set<Integer> statesWithUsageNameSource = new HashSet<>(Arrays.asList( 100, 103, 216, 219, 222, 225 ));
-  protected static Set<Integer> statesWithUsageNameDigits = new HashSet<>(Arrays.asList( 106, 113, 115, 120, 131, 139 ));
-  protected static Set<Integer> statesWithUsageNamePre = new HashSet<>(Arrays.asList( 149, 164, 176, 190, 201, 208 ));
-  protected static Set<Integer> statesWithUsageNamePost = new HashSet<>(Arrays.asList( 153, 168, 180, 194, 205, 212 ));
-  protected static Set<Integer> statesWithUsageNameParts = new HashSet<>(Arrays.asList( 228, 232 ));
+  protected static Set<Integer> statesWithUsageNameSource = new HashSet<>(Arrays.asList( 102, 105, 218, 221, 224, 227 ));
+  protected static Set<Integer> statesWithUsageNameDigits = new HashSet<>(Arrays.asList( 108, 115, 117, 122, 133, 141 ));
+  protected static Set<Integer> statesWithUsageNamePre = new HashSet<>(Arrays.asList( 151, 166, 178, 192, 203, 210 ));
+  protected static Set<Integer> statesWithUsageNamePost = new HashSet<>(Arrays.asList( 155, 170, 182, 196, 207, 214 ));
+  protected static Set<Integer> statesWithUsageNameParts = new HashSet<>(Arrays.asList( 230, 234 ));
   protected static Set<Integer> statesWithUsageNameMCQualifiedName = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameMCVoidType = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameMCType = Collections.emptySet();
-  protected static Set<Integer> statesWithUsageNameName = new HashSet<>(Arrays.asList( 286 ));
+  protected static Set<Integer> statesWithUsageNameName = new HashSet<>(Arrays.asList( 288, 301, 305, 487, 491, 571 ));
   protected static Set<Integer> statesWithUsageNameConfigurationElements = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameAssetID = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameBaseUrl = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameEndpoint = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameAssetMetaData = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameTitle = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameDescription = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNamePublisher = new HashSet<>(Arrays.asList( 354 ));
   protected static Set<Integer> statesWithUsageNameStringLiteral = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameCreated = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameModified = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameDataAddress = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameSchemaAddress = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameAccessPolicy = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameEDCPushEndpointsConfig = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameComplexName = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameRole = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameIdentityProviderConfig = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameOAuthInfo = Collections.emptySet();
 
   // Named defining
   protected static Set<Integer> statesDefiningName = Collections.emptySet();
@@ -137,12 +152,108 @@ public class DSL4DataspacesParserInfo {
     return statesWithUsageNameConfigurationElements.contains(state);
   }
 
+  public static boolean stateHasUsageNameAssetID(int state){
+    return getDelegate()._stateHasUsageNameAssetID(state);
+  }
+
+  protected boolean _stateHasUsageNameAssetID(int state){
+    return statesWithUsageNameAssetID.contains(state);
+  }
+
+  public static boolean stateHasUsageNameBaseUrl(int state){
+    return getDelegate()._stateHasUsageNameBaseUrl(state);
+  }
+
+  protected boolean _stateHasUsageNameBaseUrl(int state){
+    return statesWithUsageNameBaseUrl.contains(state);
+  }
+
+  public static boolean stateHasUsageNameEndpoint(int state){
+    return getDelegate()._stateHasUsageNameEndpoint(state);
+  }
+
+  protected boolean _stateHasUsageNameEndpoint(int state){
+    return statesWithUsageNameEndpoint.contains(state);
+  }
+
+  public static boolean stateHasUsageNameAssetMetaData(int state){
+    return getDelegate()._stateHasUsageNameAssetMetaData(state);
+  }
+
+  protected boolean _stateHasUsageNameAssetMetaData(int state){
+    return statesWithUsageNameAssetMetaData.contains(state);
+  }
+
+  public static boolean stateHasUsageNameTitle(int state){
+    return getDelegate()._stateHasUsageNameTitle(state);
+  }
+
+  protected boolean _stateHasUsageNameTitle(int state){
+    return statesWithUsageNameTitle.contains(state);
+  }
+
+  public static boolean stateHasUsageNameDescription(int state){
+    return getDelegate()._stateHasUsageNameDescription(state);
+  }
+
+  protected boolean _stateHasUsageNameDescription(int state){
+    return statesWithUsageNameDescription.contains(state);
+  }
+
+  public static boolean stateHasUsageNamePublisher(int state){
+    return getDelegate()._stateHasUsageNamePublisher(state);
+  }
+
+  protected boolean _stateHasUsageNamePublisher(int state){
+    return statesWithUsageNamePublisher.contains(state);
+  }
+
   public static boolean stateHasUsageNameStringLiteral(int state){
     return getDelegate()._stateHasUsageNameStringLiteral(state);
   }
 
   protected boolean _stateHasUsageNameStringLiteral(int state){
     return statesWithUsageNameStringLiteral.contains(state);
+  }
+
+  public static boolean stateHasUsageNameCreated(int state){
+    return getDelegate()._stateHasUsageNameCreated(state);
+  }
+
+  protected boolean _stateHasUsageNameCreated(int state){
+    return statesWithUsageNameCreated.contains(state);
+  }
+
+  public static boolean stateHasUsageNameModified(int state){
+    return getDelegate()._stateHasUsageNameModified(state);
+  }
+
+  protected boolean _stateHasUsageNameModified(int state){
+    return statesWithUsageNameModified.contains(state);
+  }
+
+  public static boolean stateHasUsageNameDataAddress(int state){
+    return getDelegate()._stateHasUsageNameDataAddress(state);
+  }
+
+  protected boolean _stateHasUsageNameDataAddress(int state){
+    return statesWithUsageNameDataAddress.contains(state);
+  }
+
+  public static boolean stateHasUsageNameSchemaAddress(int state){
+    return getDelegate()._stateHasUsageNameSchemaAddress(state);
+  }
+
+  protected boolean _stateHasUsageNameSchemaAddress(int state){
+    return statesWithUsageNameSchemaAddress.contains(state);
+  }
+
+  public static boolean stateHasUsageNameAccessPolicy(int state){
+    return getDelegate()._stateHasUsageNameAccessPolicy(state);
+  }
+
+  protected boolean _stateHasUsageNameAccessPolicy(int state){
+    return statesWithUsageNameAccessPolicy.contains(state);
   }
 
   public static boolean stateHasUsageNameEDCPushEndpointsConfig(int state){
@@ -153,12 +264,36 @@ public class DSL4DataspacesParserInfo {
     return statesWithUsageNameEDCPushEndpointsConfig.contains(state);
   }
 
+  public static boolean stateHasUsageNameComplexName(int state){
+    return getDelegate()._stateHasUsageNameComplexName(state);
+  }
+
+  protected boolean _stateHasUsageNameComplexName(int state){
+    return statesWithUsageNameComplexName.contains(state);
+  }
+
   public static boolean stateHasUsageNameRole(int state){
     return getDelegate()._stateHasUsageNameRole(state);
   }
 
   protected boolean _stateHasUsageNameRole(int state){
     return statesWithUsageNameRole.contains(state);
+  }
+
+  public static boolean stateHasUsageNameIdentityProviderConfig(int state){
+    return getDelegate()._stateHasUsageNameIdentityProviderConfig(state);
+  }
+
+  protected boolean _stateHasUsageNameIdentityProviderConfig(int state){
+    return statesWithUsageNameIdentityProviderConfig.contains(state);
+  }
+
+  public static boolean stateHasUsageNameOAuthInfo(int state){
+    return getDelegate()._stateHasUsageNameOAuthInfo(state);
+  }
+
+  protected boolean _stateHasUsageNameOAuthInfo(int state){
+    return statesWithUsageNameOAuthInfo.contains(state);
   }
 
   public static boolean stateDefinesName(int state){

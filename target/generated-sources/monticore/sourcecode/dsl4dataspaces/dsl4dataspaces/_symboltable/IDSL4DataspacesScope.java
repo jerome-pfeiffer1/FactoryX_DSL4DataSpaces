@@ -26,7 +26,7 @@ import de.monticore.symboltable.*;
 
 /* Hookpoint: InterfaceContent:Annotations */
 
- public  interface IDSL4DataspacesScope extends de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope,de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope  { 
+ public  interface IDSL4DataspacesScope extends de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope,de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope  { 
 /* Hookpoint: InterfaceContent:Elements */
 
 

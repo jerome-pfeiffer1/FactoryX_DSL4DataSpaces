@@ -6,95 +6,103 @@ import de.monticore.literals.*;
 grammar DSL4Dataspaces extends MCBasicTypes, MCJavaLiterals {
 
     DataSpaceConnectorConfiguration =
-        "DataSpaceConnectorConfiguration" Name "{"
+        "connector config" Name "{"
             ConfigurationElements+
         "}";
 
     interface ConfigurationElements;
+    ComplexName = Name ("-" Name)*;
 
-    IdentificationData implements ConfigurationElements =
-        "IdentificationData" "{"
-            "linkedAssetID" "=" StringLiteral ";"
-            "baseUrl" "=" StringLiteral ";"
-            "endpoint" "=" StringLiteral ";"
-            "idType" "=" StringLiteral ";"
+    DiscoveryData implements ConfigurationElements =
+        "discovery" "{"
+            "linkedAssetID"  assetID:ComplexName ";"
+            "baseUrl"  baseUrl:StringLiteral ";"
+            "endpoint"  endpoint:StringLiteral ";"
+            "idType"  idType:["URI"] ";"
+            AssetMetaData
         "}";
 
-    AssetMetaData implements ConfigurationElements =
-        "AssetMetaData" "{"
-            "title" "=" StringLiteral ";"
-            "description" "=" StringLiteral ";"
-            "publisher" "=" StringLiteral ";"
-            "sidiCode" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
-            "version" "=" StringLiteral ";"
-            "created" "=" StringLiteral ";"
-            "modified" "=" StringLiteral ";"
-            "language" "=" StringLiteral ";"
+    AssetMetaData  =
+        "asset" "{"
+            "title"  title:ComplexName+ ";"
+            ("description"  description:StringLiteral ";")?
+            "publisher"  publisher:Name+ ";"
+            "sidiCodes"  "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            "version"  StringLiteral ";"
+            "created"  created:StringLiteral ";"
+            "modified"  modified:StringLiteral ";"
+            "language"  language:[de:"de"|en:"en"|nl:"nl"] ";"
         "}";
 
     interface Usage extends ConfigurationElements;
 
     BaseUsage implements Usage =
         "Usage" "{"
-            "baseUrl" "=" StringLiteral ";"
-            "endpoint" "=" StringLiteral ";"
-            "dataAddress" "=" StringLiteral ";"
-            "dataSchemaAddress" "=" StringLiteral ";"
+            "baseUrl"  baseUrl:StringLiteral ";"
+            "endpoint"   endpoint:StringLiteral ";"
+            "dataAddress"  dataAddress:StringLiteral ";"
+            "dataSchemaAddress"  schemaAddress:StringLiteral ";"
+            AccessPolicy
         "}";
 
 
     OPCUAUsage implements Usage =
-        "OPCUAUsage" "{"
-            "supportedProtocols" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
-            ("qosMetrics" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";")?
-            "securityPolicy" "=" StringLiteral ";"
-            "securityMode" "=" StringLiteral ";"
-            "authenticationMode" "=" StringLiteral ";"
+        "opcua" "usage" "{"
+            "supportedProtocols"  "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            ("qosMetrics"  "[" (StringLiteral ("," StringLiteral)*)? "]" ";")?
+            "securityPolicy"  StringLiteral ";"
+            "securityMode"  StringLiteral ";"
+            "authenticationMode"  StringLiteral ";"
+            AccessPolicy
         "}";
 
     EDCUsage implements Usage =
-        "EDCUsage" "{"
-            "remoteAddress" "=" StringLiteral ";"
-            "remoteID" "=" StringLiteral ";"
-            "xAPIKey" "=" StringLiteral ";"
-            "stsServiceAddress" "=" StringLiteral ";"
-            "trustedDIDRegistries" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+        "edc" "usage" "{"
+            "remoteAddress"  StringLiteral ";"
+            "remoteID"  (Name || ":")+ ";"
+            "xAPIKey"  StringLiteral ";"
+            "stsServiceAddress"  StringLiteral ";"
+            "registries"  "{" (StringLiteral ("," StringLiteral)*)? "}" ";"
             EDCPushEndpointsConfig
+            AccessPolicy
         "}";
 
     EDCPushEndpointsConfig =
-        "EDCPushEndpointsConfig" "{"
-            "cloudPush" "=" "{" (StringLiteral "=" StringLiteral ("," StringLiteral "=" StringLiteral)*)? "}" ";"
-            "callBackAddress" "=" StringLiteral ";"
+        "push" "endpoints" "{"
+            "cloudPush"  "{" (ComplexName "=" StringLiteral ("," ComplexName "=" StringLiteral)*)? "}" ";"
+            "callBackAddress"  StringLiteral ";"
         "}";
 
-    AccessPolicy implements ConfigurationElements =
-        "AccessPolicy" "{"
-            "usagePolicy" "=" StringLiteral ";"
-            "contractOffer" "=" "{" (StringLiteral "=" StringLiteral ("," StringLiteral "=" StringLiteral)*)? "}" ";"
-            "accessControl" "=" "[" Role ("," Role)* "]" ";"
+    AccessPolicy =
+        "access" "policy" "{"
+            "usagePolicy"  StringLiteral ";"
+            "contractOffer"  "{" (Name "=" StringLiteral | ",")+ "}"  ";"
+            "accessControl"  "[" Role ("," Role)* "]" ";"
+            IdentityProviderConfig?
+            OAuthInfo?
         "}";
 
     Role =
         "Role" "{"
-            "roleName" "=" StringLiteral ";"
-            "permissions" "=" "[" (StringLiteral ("," StringLiteral)*)? "]" ";"
+            "name" ComplexName ";"
+            "permissions"  "[" (ComplexName ("," ComplexName)*)? "]" ";"
         "}";
 
-    IdentityProviderConfig implements ConfigurationElements =
-        "IdentityProviderConfig" "{"
-            "idpEndpoint" "=" StringLiteral ";"
-            "clientId" "=" StringLiteral ";"
-            "secret" "=" StringLiteral ";"
-            "grantType" "=" StringLiteral ";"
+    IdentityProviderConfig  =
+        "identity" "provider" "config" "{"
+            "idpEndpoint"  StringLiteral ";"
+            "clientId"  ComplexName ";"
+            "secret"  StringLiteral ";"
+            "grantType"  ComplexName ";"
         "}";
 
     OAuthInfo implements ConfigurationElements =
-        "OAuthInfo" "{"
-            "id" "=" StringLiteral ";"
-            "secret" "=" StringLiteral ";"
-            "grantType" "=" StringLiteral ";"
-            "scope" "=" StringLiteral ";"
+        "oauth" "{"
+            "id"  StringLiteral ";"
+            "secret"  StringLiteral ";"
+            "grantType"  StringLiteral ";"
+            "scope"  StringLiteral ";"
         "}";
+
 
 }
