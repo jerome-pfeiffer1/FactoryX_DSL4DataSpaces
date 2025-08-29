@@ -139,18 +139,30 @@ import de.se_rwth.commons.SourcePosition;
 // traverse(...) method with the elements concrete type.
 
 
-      if (null != node.getAssetID()) {
-        node.getAssetID().accept(getTraverser());
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTComplexName> iter_assetID = node.getAssetIDList().iterator();
+      while (iter_assetID.hasNext()) {
+        iter_assetID.next().accept(getTraverser());
       }
-      if (null != node.getBaseUrl()) {
-        node.getBaseUrl().accept(getTraverser());
+    }
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_baseUrl = node.getBaseUrlList().iterator();
+      while (iter_baseUrl.hasNext()) {
+        iter_baseUrl.next().accept(getTraverser());
       }
-      if (null != node.getEndpoint()) {
-        node.getEndpoint().accept(getTraverser());
+    }
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_endpoint = node.getEndpointList().iterator();
+      while (iter_endpoint.hasNext()) {
+        iter_endpoint.next().accept(getTraverser());
       }
-      if (null != node.getAssetMetaData()) {
-        node.getAssetMetaData().accept(getTraverser());
+    }
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData> iter_assetMetaDatas = node.getAssetMetaDataList().iterator();
+      while (iter_assetMetaDatas.hasNext()) {
+        iter_assetMetaDatas.next().accept(getTraverser());
       }
+    }
 
 
 }
@@ -189,21 +201,36 @@ import de.se_rwth.commons.SourcePosition;
         iter_title.next().accept(getTraverser());
       }
     }
-      if (node.isPresentDescription()) {
-        node.getDescription().accept(getTraverser());
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_description = node.getDescriptionList().iterator();
+      while (iter_description.hasNext()) {
+        iter_description.next().accept(getTraverser());
       }
+    }
     {
       Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_stringLiterals = node.getStringLiteralList().iterator();
       while (iter_stringLiterals.hasNext()) {
         iter_stringLiterals.next().accept(getTraverser());
       }
     }
-      if (null != node.getCreated()) {
-        node.getCreated().accept(getTraverser());
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_version = node.getVersionList().iterator();
+      while (iter_version.hasNext()) {
+        iter_version.next().accept(getTraverser());
       }
-      if (null != node.getModified()) {
-        node.getModified().accept(getTraverser());
+    }
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_created = node.getCreatedList().iterator();
+      while (iter_created.hasNext()) {
+        iter_created.next().accept(getTraverser());
       }
+    }
+    {
+      Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_modified = node.getModifiedList().iterator();
+      while (iter_modified.hasNext()) {
+        iter_modified.next().accept(getTraverser());
+      }
+    }
 
 
 }
@@ -236,20 +263,11 @@ import de.se_rwth.commons.SourcePosition;
 // traverse(...) method with the elements concrete type.
 
 
-      if (null != node.getBaseUrl()) {
-        node.getBaseUrl().accept(getTraverser());
-      }
-      if (null != node.getEndpoint()) {
-        node.getEndpoint().accept(getTraverser());
-      }
       if (null != node.getDataAddress()) {
         node.getDataAddress().accept(getTraverser());
       }
       if (null != node.getSchemaAddress()) {
         node.getSchemaAddress().accept(getTraverser());
-      }
-      if (null != node.getAccessPolicy()) {
-        node.getAccessPolicy().accept(getTraverser());
       }
 
 
@@ -284,14 +302,23 @@ import de.se_rwth.commons.SourcePosition;
 
 
     {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage> iter_baseUsages = node.getBaseUsageList().iterator();
+      while (iter_baseUsages.hasNext()) {
+        iter_baseUsages.next().accept(getTraverser());
+      }
+    }
+    {
       Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_stringLiterals = node.getStringLiteralList().iterator();
       while (iter_stringLiterals.hasNext()) {
         iter_stringLiterals.next().accept(getTraverser());
       }
     }
-      if (null != node.getAccessPolicy()) {
-        node.getAccessPolicy().accept(getTraverser());
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy> iter_accessPolicys = node.getAccessPolicyList().iterator();
+      while (iter_accessPolicys.hasNext()) {
+        iter_accessPolicys.next().accept(getTraverser());
       }
+    }
 
 
 }
@@ -325,17 +352,29 @@ import de.se_rwth.commons.SourcePosition;
 
 
     {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage> iter_baseUsages = node.getBaseUsageList().iterator();
+      while (iter_baseUsages.hasNext()) {
+        iter_baseUsages.next().accept(getTraverser());
+      }
+    }
+    {
       Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_stringLiterals = node.getStringLiteralList().iterator();
       while (iter_stringLiterals.hasNext()) {
         iter_stringLiterals.next().accept(getTraverser());
       }
     }
-      if (null != node.getEDCPushEndpointsConfig()) {
-        node.getEDCPushEndpointsConfig().accept(getTraverser());
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig> iter_eDCPushEndpointsConfigs = node.getEDCPushEndpointsConfigList().iterator();
+      while (iter_eDCPushEndpointsConfigs.hasNext()) {
+        iter_eDCPushEndpointsConfigs.next().accept(getTraverser());
       }
-      if (null != node.getAccessPolicy()) {
-        node.getAccessPolicy().accept(getTraverser());
+    }
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy> iter_accessPolicys = node.getAccessPolicyList().iterator();
+      while (iter_accessPolicys.hasNext()) {
+        iter_accessPolicys.next().accept(getTraverser());
       }
+    }
 
 
 }
@@ -424,12 +463,18 @@ import de.se_rwth.commons.SourcePosition;
         iter_roles.next().accept(getTraverser());
       }
     }
-      if (node.isPresentIdentityProviderConfig()) {
-        node.getIdentityProviderConfig().accept(getTraverser());
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig> iter_identityProviderConfigs = node.getIdentityProviderConfigList().iterator();
+      while (iter_identityProviderConfigs.hasNext()) {
+        iter_identityProviderConfigs.next().accept(getTraverser());
       }
-      if (node.isPresentOAuthInfo()) {
-        node.getOAuthInfo().accept(getTraverser());
+    }
+    {
+      Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo> iter_oAuthInfos = node.getOAuthInfoList().iterator();
+      while (iter_oAuthInfos.hasNext()) {
+        iter_oAuthInfos.next().accept(getTraverser());
       }
+    }
 
 
 }

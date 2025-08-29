@@ -111,6 +111,11 @@ public abstract class EmptyDSL4DataspacesParserInfo extends DSL4DataspacesParser
     }
 
     @Override
+    protected boolean _stateHasUsageNameVersion(int state){
+      return false;
+    }
+
+    @Override
     protected boolean _stateHasUsageNameCreated(int state){
       return false;
     }
@@ -127,6 +132,11 @@ public abstract class EmptyDSL4DataspacesParserInfo extends DSL4DataspacesParser
 
     @Override
     protected boolean _stateHasUsageNameSchemaAddress(int state){
+      return false;
+    }
+
+    @Override
+    protected boolean _stateHasUsageNameBaseUsage(int state){
       return false;
     }
 

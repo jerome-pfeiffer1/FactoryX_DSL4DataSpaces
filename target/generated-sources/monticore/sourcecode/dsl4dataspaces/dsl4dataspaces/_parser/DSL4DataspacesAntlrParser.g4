@@ -1018,30 +1018,35 @@ DISCOVERY4173759920
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal linkedAssetID'
 LINKEDASSETID675711922
-   tmp0=complexName{_builder.setAssetID(_localctx.tmp0.ret);}  
+   tmp0=complexName{addToIteratedAttributeIfNotNull(_builder.getAssetIDList(), _localctx.tmp0.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal baseUrl'
 BASEURL3962341598
-   tmp1=stringLiteral{_builder.setBaseUrl(_localctx.tmp1.ret);}  
+   tmp1=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getBaseUrlList(), _localctx.tmp1.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal endpoint'
 ENDPOINT1741102485
-   tmp2=stringLiteral{_builder.setEndpoint(_localctx.tmp2.ret);}  
+   tmp2=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getEndpointList(), _localctx.tmp2.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal idType'
 IDTYPE3101035253
@@ -1054,8 +1059,11 @@ _builder.setIdType(true);
   
  // Start of 'ASTTerminal ;'
 SEMI
-   tmp3=assetMetaData{_builder.setAssetMetaData(_localctx.tmp3.ret);}  
+  |
+   tmp3=assetMetaData{addToIteratedAttributeIfNotNull(_builder.getAssetMetaDataList(), _localctx.tmp3.ret);}  
   
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1081,6 +1089,8 @@ ASSET93121264
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal title'
 TITLE110371416
@@ -1089,18 +1099,16 @@ TITLE110371416
   
  // Start of 'ASTTerminal ;'
 SEMI
-  (
-  
+  |
   
  // Start of 'ASTTerminal description'
 DESCRIPTION2570421244
-   tmp1=stringLiteral{_builder.setDescription(_localctx.tmp1.ret);}  
+   tmp1=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getDescriptionList(), _localctx.tmp1.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
-  
-)?
+  |
   
  // Start of 'ASTTerminal publisher'
 PUBLISHER1447404028
@@ -1111,6 +1119,7 @@ PUBLISHER1447404028
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal sidiCodes'
 SIDICODES2535023499
@@ -1138,30 +1147,34 @@ RBRACK
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal version'
 VERSION351608024
-   tmp5=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp5.ret);}  
+   tmp5=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getVersionList(), _localctx.tmp5.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal created'
 CREATED1028554472
-   tmp6=stringLiteral{_builder.setCreated(_localctx.tmp6.ret);}  
+   tmp6=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getCreatedList(), _localctx.tmp6.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal modified'
 MODIFIED3679453897
-   tmp7=stringLiteral{_builder.setModified(_localctx.tmp7.ret);}  
+   tmp7=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getModifiedList(), _localctx.tmp7.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal language'
 LANGUAGE2681377624
@@ -1180,6 +1193,8 @@ _builder.setLanguage(dsl4dataspaces.dsl4dataspaces._ast.ASTConstantsDSL4Dataspac
   
  // Start of 'ASTTerminal ;'
 SEMI
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1200,31 +1215,9 @@ _localctx.ret = _builder.uncheckedBuild();}
  : 
   
   
- // Start of 'ASTTerminal Usage'
-USAGE82021761
-  
- // Start of 'ASTTerminal {'
-LCURLY
-  
- // Start of 'ASTTerminal baseUrl'
-BASEURL3962341598
-   tmp0=stringLiteral{_builder.setBaseUrl(_localctx.tmp0.ret);}  
-  
-  
- // Start of 'ASTTerminal ;'
-SEMI
-  
- // Start of 'ASTTerminal endpoint'
-ENDPOINT1741102485
-   tmp1=stringLiteral{_builder.setEndpoint(_localctx.tmp1.ret);}  
-  
-  
- // Start of 'ASTTerminal ;'
-SEMI
-  
  // Start of 'ASTTerminal dataAddress'
 DATAADDRESS1666068714
-   tmp2=stringLiteral{_builder.setDataAddress(_localctx.tmp2.ret);}  
+   tmp0=stringLiteral{_builder.setDataAddress(_localctx.tmp0.ret);}  
   
   
  // Start of 'ASTTerminal ;'
@@ -1232,16 +1225,11 @@ SEMI
   
  // Start of 'ASTTerminal dataSchemaAddress'
 DATASCHEMAADDRESS258677641
-   tmp3=stringLiteral{_builder.setSchemaAddress(_localctx.tmp3.ret);}  
+   tmp1=stringLiteral{_builder.setSchemaAddress(_localctx.tmp1.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
-   tmp4=accessPolicy{_builder.setAccessPolicy(_localctx.tmp4.ret);}  
-  
-  
- // Start of 'ASTTerminal }'
-RCURLY
   ;
   // End of 'ASTClassProd'
 
@@ -1267,6 +1255,11 @@ USAGE111574433
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
+   tmp0=baseUsage{addToIteratedAttributeIfNotNull(_builder.getBaseUsageList(), _localctx.tmp0.ret);}  
+  
+  |
   
  // Start of 'ASTTerminal supportedProtocols'
 SUPPORTEDPROTOCOLS1268839373
@@ -1275,14 +1268,14 @@ SUPPORTEDPROTOCOLS1268839373
 LBRACK
   (
   
-   tmp0=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp0.ret);}  
+   tmp1=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp1.ret);}  
   
   (
   
   
  // Start of 'ASTTerminal ,'
 COMMA
-   tmp1=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp1.ret);}  
+   tmp2=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp2.ret);}  
   
   
 )*
@@ -1294,6 +1287,7 @@ RBRACK
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   (
   
   
@@ -1302,16 +1296,14 @@ QOSMETRICS1685033198
   
  // Start of 'ASTTerminal ['
 LBRACK
-  (
-  
-   tmp2=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp2.ret);}  
+   tmp3=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp3.ret);}  
   
   (
   
   
  // Start of 'ASTTerminal ,'
 COMMA
-   tmp3=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp3.ret);}  
+   tmp4=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp4.ret);}  
   
   
 )*
@@ -1323,34 +1315,38 @@ RBRACK
   
  // Start of 'ASTTerminal ;'
 SEMI
-  
-)?
+  |
   
  // Start of 'ASTTerminal securityPolicy'
 SECURITYPOLICY3506346130
-   tmp4=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp4.ret);}  
-  
-  
- // Start of 'ASTTerminal ;'
-SEMI
-  
- // Start of 'ASTTerminal securityMode'
-SECURITYMODE808027395
    tmp5=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp5.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
- // Start of 'ASTTerminal authenticationMode'
-AUTHENTICATIONMODE1705415739
+ // Start of 'ASTTerminal securityMode'
+SECURITYMODE808027395
    tmp6=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp6.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
-   tmp7=accessPolicy{_builder.setAccessPolicy(_localctx.tmp7.ret);}  
+  |
   
+ // Start of 'ASTTerminal authenticationMode'
+AUTHENTICATIONMODE1705415739
+   tmp7=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp7.ret);}  
+  
+  
+ // Start of 'ASTTerminal ;'
+SEMI
+  |
+   tmp8=accessPolicy{addToIteratedAttributeIfNotNull(_builder.getAccessPolicyList(), _localctx.tmp8.ret);}  
+  
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1379,20 +1375,26 @@ USAGE111574433
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
+   tmp0=baseUsage{addToIteratedAttributeIfNotNull(_builder.getBaseUsageList(), _localctx.tmp0.ret);}  
+  
+  |
   
  // Start of 'ASTTerminal remoteAddress'
 REMOTEADDRESS3662708942
-   tmp0=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp0.ret);}  
+   tmp1=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp1.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal remoteID'
 REMOTEID3782084577
   (
   
-  (tmp1=Name{ addToIteratedAttributeIfNotNull(_builder.getNameList(), convertName($tmp1));}
+  (tmp2=Name{ addToIteratedAttributeIfNotNull(_builder.getNameList(), convertName($tmp2));}
 
   ) 
   
@@ -1401,7 +1403,7 @@ REMOTEID3782084577
   
  // Start of 'ASTTerminal :'
 COLON
-  (tmp2=Name{ addToIteratedAttributeIfNotNull(_builder.getNameList(), convertName($tmp2));}
+  (tmp3=Name{ addToIteratedAttributeIfNotNull(_builder.getNameList(), convertName($tmp3));}
 
   ) 
   
@@ -1412,22 +1414,25 @@ COLON
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal xAPIKey'
 XAPIKEY1063285885
-   tmp3=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp3.ret);}  
-  
-  
- // Start of 'ASTTerminal ;'
-SEMI
-  
- // Start of 'ASTTerminal stsServiceAddress'
-STSSERVICEADDRESS3595907665
    tmp4=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp4.ret);}  
   
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
+  
+ // Start of 'ASTTerminal stsServiceAddress'
+STSSERVICEADDRESS3595907665
+   tmp5=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp5.ret);}  
+  
+  
+ // Start of 'ASTTerminal ;'
+SEMI
+  |
   
  // Start of 'ASTTerminal registries'
 REGISTRIES2425415067
@@ -1436,14 +1441,14 @@ REGISTRIES2425415067
 LCURLY
   (
   
-   tmp5=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp5.ret);}  
+   tmp6=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp6.ret);}  
   
   (
   
   
  // Start of 'ASTTerminal ,'
 COMMA
-   tmp6=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp6.ret);}  
+   tmp7=stringLiteral{addToIteratedAttributeIfNotNull(_builder.getStringLiteralList(), _localctx.tmp7.ret);}  
   
   
 )*
@@ -1455,10 +1460,14 @@ RCURLY
   
  // Start of 'ASTTerminal ;'
 SEMI
-   tmp7=eDCPushEndpointsConfig{_builder.setEDCPushEndpointsConfig(_localctx.tmp7.ret);}  
+  |
+   tmp8=eDCPushEndpointsConfig{addToIteratedAttributeIfNotNull(_builder.getEDCPushEndpointsConfigList(), _localctx.tmp8.ret);}  
   
-   tmp8=accessPolicy{_builder.setAccessPolicy(_localctx.tmp8.ret);}  
+  |
+   tmp9=accessPolicy{addToIteratedAttributeIfNotNull(_builder.getAccessPolicyList(), _localctx.tmp9.ret);}  
   
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1487,6 +1496,8 @@ ENDPOINTS2434569598
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal cloudPush'
 CLOUDPUSH3868712687
@@ -1524,6 +1535,7 @@ RCURLY
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal callBackAddress'
 CALLBACKADDRESS105567183
@@ -1532,6 +1544,8 @@ CALLBACKADDRESS105567183
   
  // Start of 'ASTTerminal ;'
 SEMI
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1560,6 +1574,8 @@ POLICY3312297266
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal usagePolicy'
 USAGEPOLICY817009203
@@ -1568,6 +1584,7 @@ USAGEPOLICY817009203
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal contractOffer'
 CONTRACTOFFER3767399530
@@ -1597,6 +1614,7 @@ RCURLY
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal accessControl'
 ACCESSCONTROL798502745
@@ -1620,10 +1638,14 @@ RBRACK
   
  // Start of 'ASTTerminal ;'
 SEMI
-  ( tmp5=identityProviderConfig{_builder.setIdentityProviderConfig(_localctx.tmp5.ret);}) ? 
+  |
+   tmp5=identityProviderConfig{addToIteratedAttributeIfNotNull(_builder.getIdentityProviderConfigList(), _localctx.tmp5.ret);}  
   
-  ( tmp6=oAuthInfo{_builder.setOAuthInfo(_localctx.tmp6.ret);}) ? 
+  |
+   tmp6=oAuthInfo{addToIteratedAttributeIfNotNull(_builder.getOAuthInfoList(), _localctx.tmp6.ret);}  
   
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1715,6 +1737,8 @@ CONFIG2940175170
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal idpEndpoint'
 IDPENDPOINT3356463978
@@ -1723,6 +1747,7 @@ IDPENDPOINT3356463978
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal clientId'
 CLIENTID908408390
@@ -1731,6 +1756,7 @@ CLIENTID908408390
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal secret'
 SECRET3388690096
@@ -1739,6 +1765,7 @@ SECRET3388690096
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal grantType'
 GRANTTYPE3075135094
@@ -1747,6 +1774,8 @@ GRANTTYPE3075135094
   
  // Start of 'ASTTerminal ;'
 SEMI
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1772,6 +1801,8 @@ OAUTH105516695
   
  // Start of 'ASTTerminal {'
 LCURLY
+  (
+  
   
  // Start of 'ASTTerminal id'
 ID3355
@@ -1780,6 +1811,7 @@ ID3355
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal secret'
 SECRET3388690096
@@ -1788,6 +1820,7 @@ SECRET3388690096
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal grantType'
 GRANTTYPE3075135094
@@ -1796,6 +1829,7 @@ GRANTTYPE3075135094
   
  // Start of 'ASTTerminal ;'
 SEMI
+  |
   
  // Start of 'ASTTerminal scope'
 SCOPE109264468
@@ -1804,6 +1838,8 @@ SCOPE109264468
   
  // Start of 'ASTTerminal ;'
 SEMI
+  
+)*
   
  // Start of 'ASTTerminal }'
 RCURLY
@@ -1927,14 +1963,11 @@ RCURLY
    returns [dsl4dataspaces.dsl4dataspaces._ast.ASTUsage ret]
   : 
   
-  tmp28=baseUsage
+  tmp28=oPCUAUsage
 {$ret=$tmp28.ret;}
   |
-  tmp29=oPCUAUsage
+  tmp29=eDCUsage
 {$ret=$tmp29.ret;}
-  |
-  tmp30=eDCUsage
-{$ret=$tmp30.ret;}
   ;
 
   nokeyword_f102 : {next("f")}? Name;

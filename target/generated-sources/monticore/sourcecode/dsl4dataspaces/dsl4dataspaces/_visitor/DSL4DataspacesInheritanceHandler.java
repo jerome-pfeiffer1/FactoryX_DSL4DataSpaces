@@ -136,11 +136,7 @@ this.traverser = traverser;
 
   getTraverser().visit((ASTNode) node);
   getTraverser().visit((dsl4dataspaces.dsl4dataspaces._ast.ASTDSL4DataspacesNode) node);
-  getTraverser().visit((dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements) node);
-  getTraverser().visit((dsl4dataspaces.dsl4dataspaces._ast.ASTUsage) node);
   DSL4DataspacesHandler.super.handle(node);
-  getTraverser().endVisit((dsl4dataspaces.dsl4dataspaces._ast.ASTUsage) node);
-  getTraverser().endVisit((dsl4dataspaces.dsl4dataspaces._ast.ASTConfigurationElements) node);
   getTraverser().endVisit((dsl4dataspaces.dsl4dataspaces._ast.ASTDSL4DataspacesNode) node);
   getTraverser().endVisit((ASTNode) node);
 }
@@ -315,15 +311,15 @@ this.traverser = traverser;
 
   getTraverser().visit((de.monticore.symboltable.IScope) node);
   getTraverser().visit((de.monticore.literals.mcliteralsbasis._symboltable.IMCLiteralsBasisScope) node);
-  getTraverser().visit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
   getTraverser().visit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
-  getTraverser().visit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
+  getTraverser().visit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
   getTraverser().visit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
+  getTraverser().visit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
   DSL4DataspacesHandler.super.handle(node);
-  getTraverser().endVisit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
   getTraverser().endVisit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
-  getTraverser().endVisit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
+  getTraverser().endVisit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
   getTraverser().endVisit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
+  getTraverser().endVisit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
   getTraverser().endVisit((de.monticore.literals.mcliteralsbasis._symboltable.IMCLiteralsBasisScope) node);
   getTraverser().endVisit((de.monticore.symboltable.IScope) node);
 
@@ -339,17 +335,17 @@ this.traverser = traverser;
 
   getTraverser().visit((de.monticore.symboltable.IScope) node);
   getTraverser().visit((de.monticore.literals.mcliteralsbasis._symboltable.IMCLiteralsBasisScope) node);
-  getTraverser().visit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
   getTraverser().visit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
-  getTraverser().visit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
+  getTraverser().visit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
   getTraverser().visit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
+  getTraverser().visit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
   getTraverser().visit((dsl4dataspaces.dsl4dataspaces._symboltable.IDSL4DataspacesScope) node);
   DSL4DataspacesHandler.super.handle(node);
   getTraverser().endVisit((dsl4dataspaces.dsl4dataspaces._symboltable.IDSL4DataspacesScope) node);
-  getTraverser().endVisit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
   getTraverser().endVisit((de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsScope) node);
-  getTraverser().endVisit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
+  getTraverser().endVisit((de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesScope) node);
   getTraverser().endVisit((de.monticore.literals.mccommonliterals._symboltable.IMCCommonLiteralsScope) node);
+  getTraverser().endVisit((de.monticore.mcbasics._symboltable.IMCBasicsScope) node);
   getTraverser().endVisit((de.monticore.literals.mcliteralsbasis._symboltable.IMCLiteralsBasisScope) node);
   getTraverser().endVisit((de.monticore.symboltable.IScope) node);
 

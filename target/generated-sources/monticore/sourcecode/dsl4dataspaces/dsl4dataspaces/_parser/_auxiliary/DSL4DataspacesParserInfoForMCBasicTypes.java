@@ -60,6 +60,9 @@ public class DSL4DataspacesParserInfoForMCBasicTypes extends EmptyMCBasicTypesPa
   protected boolean _stateHasUsageNameStringLiteral(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameStringLiteral(state);
   }
+  protected boolean _stateHasUsageNameVersion(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameVersion(state);
+  }
   protected boolean _stateHasUsageNameCreated(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameCreated(state);
   }
@@ -71,6 +74,9 @@ public class DSL4DataspacesParserInfoForMCBasicTypes extends EmptyMCBasicTypesPa
   }
   protected boolean _stateHasUsageNameSchemaAddress(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameSchemaAddress(state);
+  }
+  protected boolean _stateHasUsageNameBaseUsage(int state){
+    return DSL4DataspacesParserInfo.stateHasUsageNameBaseUsage(state);
   }
   protected boolean _stateHasUsageNameAccessPolicy(int state){
     return DSL4DataspacesParserInfo.stateHasUsageNameAccessPolicy(state);

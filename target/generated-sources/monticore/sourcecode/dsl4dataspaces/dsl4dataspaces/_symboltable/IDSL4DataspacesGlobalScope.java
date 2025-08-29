@@ -25,7 +25,7 @@ import de.se_rwth.commons.SourcePosition;
 
 /* Hookpoint: InterfaceContent:Annotations */
 
- public  interface IDSL4DataspacesGlobalScope extends de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesGlobalScope,de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsGlobalScope,dsl4dataspaces.dsl4dataspaces._symboltable.IDSL4DataspacesScope  { 
+ public  interface IDSL4DataspacesGlobalScope extends de.monticore.literals.mcjavaliterals._symboltable.IMCJavaLiteralsGlobalScope,de.monticore.types.mcbasictypes._symboltable.IMCBasicTypesGlobalScope,dsl4dataspaces.dsl4dataspaces._symboltable.IDSL4DataspacesScope  { 
 /* Hookpoint: InterfaceContent:Elements */
 
 

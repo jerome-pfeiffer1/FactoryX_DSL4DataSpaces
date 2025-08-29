@@ -87,7 +87,6 @@ protected void storeComment(){
   RBRACK : ']';
   OAUTH105516695 : 'oauth';
   POLICY3312297266 : 'policy';
-  USAGE82021761 : 'Usage';
   DATASCHEMAADDRESS258677641 : 'dataSchemaAddress';
   ENDPOINTS2434569598 : 'endpoints';
   CLIENTID908408390 : 'clientId';

@@ -75,7 +75,7 @@ import de.se_rwth.commons.SourcePosition;
 
 /* Hookpoint: AttributeContent:Annotations */
  public  static  String[] superGrammars
-  = {"de.monticore.types.MCBasicTypes", "de.monticore.literals.MCJavaLiterals", "de.monticore.MCBasics", "de.monticore.literals.MCCommonLiterals", "de.monticore.literals.MCLiteralsBasis"}
+  = {"de.monticore.literals.MCJavaLiterals", "de.monticore.types.MCBasicTypes", "de.monticore.literals.MCCommonLiterals", "de.monticore.MCBasics", "de.monticore.literals.MCLiteralsBasis"}
 ;
 
 
@@ -98,10 +98,10 @@ import de.se_rwth.commons.SourcePosition;
 
 
   Collection<String> allLanguages = new LinkedHashSet<>();
-    allLanguages.addAll(de.monticore.types.mcbasictypes._ast.ASTConstantsMCBasicTypes.getAllLanguages());
     allLanguages.addAll(de.monticore.literals.mcjavaliterals._ast.ASTConstantsMCJavaLiterals.getAllLanguages());
-    allLanguages.addAll(de.monticore.mcbasics._ast.ASTConstantsMCBasics.getAllLanguages());
+    allLanguages.addAll(de.monticore.types.mcbasictypes._ast.ASTConstantsMCBasicTypes.getAllLanguages());
     allLanguages.addAll(de.monticore.literals.mccommonliterals._ast.ASTConstantsMCCommonLiterals.getAllLanguages());
+    allLanguages.addAll(de.monticore.mcbasics._ast.ASTConstantsMCBasics.getAllLanguages());
     allLanguages.addAll(de.monticore.literals.mcliteralsbasis._ast.ASTConstantsMCLiteralsBasis.getAllLanguages());
   allLanguages.add(LANGUAGE);
   return allLanguages;

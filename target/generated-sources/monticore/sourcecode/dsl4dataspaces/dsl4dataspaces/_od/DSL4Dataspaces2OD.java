@@ -152,29 +152,109 @@ import de.se_rwth.commons.SourcePosition;
   pp.indent();
   String scopeName = de.se_rwth.commons.StringTransformations.uncapitalize(reporting.getScopeNameFormatted(node.getEnclosingScope()));
   pp.println("enclosingScope = " + scopeName + ";");
-  if (null != node.getAssetID()) {
-    pp.print("assetID");
-    pp.print(" = ");
-    node.getAssetID().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTComplexName> iter_assetID = node.getAssetIDList().iterator();
+    boolean isEmpty = true;
+    if (iter_assetID.hasNext()) {
+      pp.print("assetID");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getAssetIDList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("assetID");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_assetID.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_assetID.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (null != node.getBaseUrl()) {
-    pp.print("baseUrl");
-    pp.print(" = ");
-    node.getBaseUrl().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_baseUrl = node.getBaseUrlList().iterator();
+    boolean isEmpty = true;
+    if (iter_baseUrl.hasNext()) {
+      pp.print("baseUrl");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getBaseUrlList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("baseUrl");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_baseUrl.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_baseUrl.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (null != node.getEndpoint()) {
-    pp.print("endpoint");
-    pp.print(" = ");
-    node.getEndpoint().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_endpoint = node.getEndpointList().iterator();
+    boolean isEmpty = true;
+    if (iter_endpoint.hasNext()) {
+      pp.print("endpoint");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getEndpointList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("endpoint");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_endpoint.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_endpoint.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (null != node.getAssetMetaData()) {
-    pp.print("assetMetaData");
-    pp.print(" = ");
-    node.getAssetMetaData().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAssetMetaData> iter_assetMetaDatas = node.getAssetMetaDataList().iterator();
+    boolean isEmpty = true;
+    if (iter_assetMetaDatas.hasNext()) {
+      pp.print("assetMetaDatas");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getAssetMetaDataList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("assetMetaDatas");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_assetMetaDatas.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_assetMetaDatas.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   printAttribute("idType", String.valueOf(node.isIdType()));
   pp.unindent();
@@ -221,13 +301,31 @@ import de.se_rwth.commons.SourcePosition;
       pp.unindent();
     }
   }
-  if (node.isPresentDescription()) {
-    pp.print("description");
-    pp.print(" = ");
-    node.getDescription().accept(getTraverser());
-    pp.println(";");
-  } else if (printEmptyOptional) {
-    pp.println("description = absent;");
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_description = node.getDescriptionList().iterator();
+    boolean isEmpty = true;
+    if (iter_description.hasNext()) {
+      pp.print("description");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getDescriptionList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("description");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_description.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_description.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   printAttribute("publisher", String.valueOf(node.getPublisherList()));
   {
@@ -256,17 +354,83 @@ import de.se_rwth.commons.SourcePosition;
       pp.unindent();
     }
   }
-  if (null != node.getCreated()) {
-    pp.print("created");
-    pp.print(" = ");
-    node.getCreated().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_version = node.getVersionList().iterator();
+    boolean isEmpty = true;
+    if (iter_version.hasNext()) {
+      pp.print("version");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getVersionList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("version");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_version.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_version.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (null != node.getModified()) {
-    pp.print("modified");
-    pp.print(" = ");
-    node.getModified().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_created = node.getCreatedList().iterator();
+    boolean isEmpty = true;
+    if (iter_created.hasNext()) {
+      pp.print("created");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getCreatedList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("created");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_created.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_created.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
+  }
+  {
+    Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_modified = node.getModifiedList().iterator();
+    boolean isEmpty = true;
+    if (iter_modified.hasNext()) {
+      pp.print("modified");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getModifiedList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("modified");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_modified.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_modified.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   printAttribute("language", String.valueOf(node.getLanguage()));
   pp.unindent();
@@ -287,18 +451,6 @@ import de.se_rwth.commons.SourcePosition;
   pp.indent();
   String scopeName = de.se_rwth.commons.StringTransformations.uncapitalize(reporting.getScopeNameFormatted(node.getEnclosingScope()));
   pp.println("enclosingScope = " + scopeName + ";");
-  if (null != node.getBaseUrl()) {
-    pp.print("baseUrl");
-    pp.print(" = ");
-    node.getBaseUrl().accept(getTraverser());
-    pp.println(";");
-  }
-  if (null != node.getEndpoint()) {
-    pp.print("endpoint");
-    pp.print(" = ");
-    node.getEndpoint().accept(getTraverser());
-    pp.println(";");
-  }
   if (null != node.getDataAddress()) {
     pp.print("dataAddress");
     pp.print(" = ");
@@ -309,12 +461,6 @@ import de.se_rwth.commons.SourcePosition;
     pp.print("schemaAddress");
     pp.print(" = ");
     node.getSchemaAddress().accept(getTraverser());
-    pp.println(";");
-  }
-  if (null != node.getAccessPolicy()) {
-    pp.print("accessPolicy");
-    pp.print(" = ");
-    node.getAccessPolicy().accept(getTraverser());
     pp.println(";");
   }
   pp.unindent();
@@ -335,6 +481,32 @@ import de.se_rwth.commons.SourcePosition;
   pp.indent();
   String scopeName = de.se_rwth.commons.StringTransformations.uncapitalize(reporting.getScopeNameFormatted(node.getEnclosingScope()));
   pp.println("enclosingScope = " + scopeName + ";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage> iter_baseUsages = node.getBaseUsageList().iterator();
+    boolean isEmpty = true;
+    if (iter_baseUsages.hasNext()) {
+      pp.print("baseUsages");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getBaseUsageList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("baseUsages");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_baseUsages.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_baseUsages.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
+  }
   {
     Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_stringLiterals = node.getStringLiteralList().iterator();
     boolean isEmpty = true;
@@ -361,11 +533,31 @@ import de.se_rwth.commons.SourcePosition;
       pp.unindent();
     }
   }
-  if (null != node.getAccessPolicy()) {
-    pp.print("accessPolicy");
-    pp.print(" = ");
-    node.getAccessPolicy().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy> iter_accessPolicys = node.getAccessPolicyList().iterator();
+    boolean isEmpty = true;
+    if (iter_accessPolicys.hasNext()) {
+      pp.print("accessPolicys");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getAccessPolicyList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("accessPolicys");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_accessPolicys.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_accessPolicys.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   pp.unindent();
   pp.print("}");
@@ -385,6 +577,32 @@ import de.se_rwth.commons.SourcePosition;
   pp.indent();
   String scopeName = de.se_rwth.commons.StringTransformations.uncapitalize(reporting.getScopeNameFormatted(node.getEnclosingScope()));
   pp.println("enclosingScope = " + scopeName + ";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTBaseUsage> iter_baseUsages = node.getBaseUsageList().iterator();
+    boolean isEmpty = true;
+    if (iter_baseUsages.hasNext()) {
+      pp.print("baseUsages");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getBaseUsageList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("baseUsages");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_baseUsages.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_baseUsages.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
+  }
   printAttribute("names", String.valueOf(node.getNameList()));
   {
     Iterator<de.monticore.literals.mccommonliterals._ast.ASTStringLiteral> iter_stringLiterals = node.getStringLiteralList().iterator();
@@ -412,17 +630,57 @@ import de.se_rwth.commons.SourcePosition;
       pp.unindent();
     }
   }
-  if (null != node.getEDCPushEndpointsConfig()) {
-    pp.print("eDCPushEndpointsConfig");
-    pp.print(" = ");
-    node.getEDCPushEndpointsConfig().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTEDCPushEndpointsConfig> iter_eDCPushEndpointsConfigs = node.getEDCPushEndpointsConfigList().iterator();
+    boolean isEmpty = true;
+    if (iter_eDCPushEndpointsConfigs.hasNext()) {
+      pp.print("eDCPushEndpointsConfigs");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getEDCPushEndpointsConfigList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("eDCPushEndpointsConfigs");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_eDCPushEndpointsConfigs.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_eDCPushEndpointsConfigs.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (null != node.getAccessPolicy()) {
-    pp.print("accessPolicy");
-    pp.print(" = ");
-    node.getAccessPolicy().accept(getTraverser());
-    pp.println(";");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTAccessPolicy> iter_accessPolicys = node.getAccessPolicyList().iterator();
+    boolean isEmpty = true;
+    if (iter_accessPolicys.hasNext()) {
+      pp.print("accessPolicys");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getAccessPolicyList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("accessPolicys");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_accessPolicys.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_accessPolicys.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   pp.unindent();
   pp.print("}");
@@ -565,21 +823,57 @@ import de.se_rwth.commons.SourcePosition;
       pp.unindent();
     }
   }
-  if (node.isPresentIdentityProviderConfig()) {
-    pp.print("identityProviderConfig");
-    pp.print(" = ");
-    node.getIdentityProviderConfig().accept(getTraverser());
-    pp.println(";");
-  } else if (printEmptyOptional) {
-    pp.println("identityProviderConfig = absent;");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTIdentityProviderConfig> iter_identityProviderConfigs = node.getIdentityProviderConfigList().iterator();
+    boolean isEmpty = true;
+    if (iter_identityProviderConfigs.hasNext()) {
+      pp.print("identityProviderConfigs");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getIdentityProviderConfigList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("identityProviderConfigs");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_identityProviderConfigs.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_identityProviderConfigs.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
-  if (node.isPresentOAuthInfo()) {
-    pp.print("oAuthInfo");
-    pp.print(" = ");
-    node.getOAuthInfo().accept(getTraverser());
-    pp.println(";");
-  } else if (printEmptyOptional) {
-    pp.println("oAuthInfo = absent;");
+  {
+    Iterator<dsl4dataspaces.dsl4dataspaces._ast.ASTOAuthInfo> iter_oAuthInfos = node.getOAuthInfoList().iterator();
+    boolean isEmpty = true;
+    if (iter_oAuthInfos.hasNext()) {
+      pp.print("oAuthInfos");
+      pp.print(" = [");
+      pp.println("// *size: " + node.getOAuthInfoList().size());
+      pp.indent();
+      isEmpty = false;
+    } else if (printEmptyList) {
+      pp.print("oAuthInfos");
+      pp.println(" = [];");
+    }
+    boolean isFirst = true;
+    while (iter_oAuthInfos.hasNext()) {
+      if (!isFirst) {
+        pp.println(",");
+      }
+      isFirst = false;
+      iter_oAuthInfos.next().accept(getTraverser());
+    }
+    if (!isEmpty) {
+      pp.println("];");
+      pp.unindent();
+    }
   }
   pp.unindent();
   pp.print("}");

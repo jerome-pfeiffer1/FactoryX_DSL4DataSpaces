@@ -8,7 +8,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFOAuthInfo? ReplacementOp rhs:ITFOAuthInfo? "]]");
 
   OAuthInfo_Pat implements ITFOAuthInfo, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "OAuthInfo" schemaVarName:Name | ("oauth" "{" "id" stringLiteral:ITFStringLiteral ";" "secret" stringLiteral:ITFStringLiteral ";" "grantType" stringLiteral:ITFStringLiteral ";" "scope" stringLiteral:ITFStringLiteral ";" "}") | (("OAuthInfo"? schemaVarName:Name| "OAuthInfo" schemaVarName:Name?) "[[" ("oauth" "{" "id" stringLiteral:ITFStringLiteral ";" "secret" stringLiteral:ITFStringLiteral ";" "grantType" stringLiteral:ITFStringLiteral ";" "scope" stringLiteral:ITFStringLiteral ";" "}") "]]");
+    "OAuthInfo" schemaVarName:Name | ("oauth" "{" ("id" stringLiteral:ITFStringLiteral ";"| "secret" stringLiteral:ITFStringLiteral ";"| "grantType" stringLiteral:ITFStringLiteral ";"| "scope" stringLiteral:ITFStringLiteral ";")* "}") | (("OAuthInfo"? schemaVarName:Name| "OAuthInfo" schemaVarName:Name?) "[[" ("oauth" "{" ("id" stringLiteral:ITFStringLiteral ";"| "secret" stringLiteral:ITFStringLiteral ";"| "grantType" stringLiteral:ITFStringLiteral ";"| "scope" stringLiteral:ITFStringLiteral ";")* "}") "]]");
 
   OAuthInfo_Neg implements ITFOAuthInfo, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
     "not" "[[" oAuthInfo:ITFOAuthInfo "]]";
@@ -23,7 +23,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFIdentityProviderConfig? ReplacementOp rhs:ITFIdentityProviderConfig? "]]");
 
   IdentityProviderConfig_Pat implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "IdentityProviderConfig" schemaVarName:Name | ("identity" "provider" "config" "{" "idpEndpoint" stringLiteral:ITFStringLiteral ";" "clientId" complexName:ITFComplexName ";" "secret" stringLiteral:ITFStringLiteral ";" "grantType" complexName:ITFComplexName ";" "}") | (("IdentityProviderConfig"? schemaVarName:Name| "IdentityProviderConfig" schemaVarName:Name?) "[[" ("identity" "provider" "config" "{" "idpEndpoint" stringLiteral:ITFStringLiteral ";" "clientId" complexName:ITFComplexName ";" "secret" stringLiteral:ITFStringLiteral ";" "grantType" complexName:ITFComplexName ";" "}") "]]");
+    "IdentityProviderConfig" schemaVarName:Name | ("identity" "provider" "config" "{" ("idpEndpoint" stringLiteral:ITFStringLiteral ";"| "clientId" complexName:ITFComplexName ";"| "secret" stringLiteral:ITFStringLiteral ";"| "grantType" complexName:ITFComplexName ";")* "}") | (("IdentityProviderConfig"? schemaVarName:Name| "IdentityProviderConfig" schemaVarName:Name?) "[[" ("identity" "provider" "config" "{" ("idpEndpoint" stringLiteral:ITFStringLiteral ";"| "clientId" complexName:ITFComplexName ";"| "secret" stringLiteral:ITFStringLiteral ";"| "grantType" complexName:ITFComplexName ";")* "}") "]]");
 
   IdentityProviderConfig_Neg implements ITFIdentityProviderConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
     "not" "[[" identityProviderConfig:ITFIdentityProviderConfig "]]";
@@ -53,7 +53,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFAccessPolicy? ReplacementOp rhs:ITFAccessPolicy? "]]");
 
   AccessPolicy_Pat implements ITFAccessPolicy, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "AccessPolicy" schemaVarName:Name | ("access" "policy" "{" "usagePolicy" stringLiteral:ITFStringLiteral ";" "contractOffer" "{" (name:TfIdentifierName "=" stringLiteral:ITFStringLiteral| ",")+ "}" ";" "accessControl" "[" role:ITFRole ("," role:ITFRole)* "]" ";" identityProviderConfig:ITFIdentityProviderConfig? oAuthInfo:ITFOAuthInfo? "}") | (("AccessPolicy"? schemaVarName:Name| "AccessPolicy" schemaVarName:Name?) "[[" ("access" "policy" "{" "usagePolicy" stringLiteral:ITFStringLiteral ";" "contractOffer" "{" (name:TfIdentifierName "=" stringLiteral:ITFStringLiteral| ",")+ "}" ";" "accessControl" "[" role:ITFRole ("," role:ITFRole)* "]" ";" identityProviderConfig:ITFIdentityProviderConfig? oAuthInfo:ITFOAuthInfo? "}") "]]");
+    "AccessPolicy" schemaVarName:Name | ("access" "policy" "{" ("usagePolicy" stringLiteral:ITFStringLiteral ";"| "contractOffer" "{" (name:TfIdentifierName "=" stringLiteral:ITFStringLiteral| ",")+ "}" ";"| "accessControl" "[" role:ITFRole ("," role:ITFRole)* "]" ";"| identityProviderConfig:ITFIdentityProviderConfig| oAuthInfo:ITFOAuthInfo)* "}") | (("AccessPolicy"? schemaVarName:Name| "AccessPolicy" schemaVarName:Name?) "[[" ("access" "policy" "{" ("usagePolicy" stringLiteral:ITFStringLiteral ";"| "contractOffer" "{" (name:TfIdentifierName "=" stringLiteral:ITFStringLiteral| ",")+ "}" ";"| "accessControl" "[" role:ITFRole ("," role:ITFRole)* "]" ";"| identityProviderConfig:ITFIdentityProviderConfig| oAuthInfo:ITFOAuthInfo)* "}") "]]");
 
   AccessPolicy_Neg implements ITFAccessPolicy, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
     "not" "[[" accessPolicy:ITFAccessPolicy "]]";
@@ -68,7 +68,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFEDCPushEndpointsConfig? ReplacementOp rhs:ITFEDCPushEndpointsConfig? "]]");
 
   EDCPushEndpointsConfig_Pat implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "EDCPushEndpointsConfig" schemaVarName:Name | ("push" "endpoints" "{" "cloudPush" "{" (complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral ("," complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "callBackAddress" stringLiteral:ITFStringLiteral ";" "}") | (("EDCPushEndpointsConfig"? schemaVarName:Name| "EDCPushEndpointsConfig" schemaVarName:Name?) "[[" ("push" "endpoints" "{" "cloudPush" "{" (complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral ("," complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral)*)? "}" ";" "callBackAddress" stringLiteral:ITFStringLiteral ";" "}") "]]");
+    "EDCPushEndpointsConfig" schemaVarName:Name | ("push" "endpoints" "{" ("cloudPush" "{" (complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral ("," complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral)*)? "}" ";"| "callBackAddress" stringLiteral:ITFStringLiteral ";")* "}") | (("EDCPushEndpointsConfig"? schemaVarName:Name| "EDCPushEndpointsConfig" schemaVarName:Name?) "[[" ("push" "endpoints" "{" ("cloudPush" "{" (complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral ("," complexName:ITFComplexName "=" stringLiteral:ITFStringLiteral)*)? "}" ";"| "callBackAddress" stringLiteral:ITFStringLiteral ";")* "}") "]]");
 
   EDCPushEndpointsConfig_Neg implements ITFEDCPushEndpointsConfig, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
     "not" "[[" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig "]]";
@@ -83,7 +83,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFEDCUsage? ReplacementOp rhs:ITFEDCUsage? "]]");
 
   EDCUsage_Pat implements ITFEDCUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "EDCUsage" schemaVarName:Name | ("edc" "usage" "{" "remoteAddress" stringLiteral:ITFStringLiteral ";" "remoteID" (name:TfIdentifierName (":" name:TfIdentifierName)*) ";" "xAPIKey" stringLiteral:ITFStringLiteral ";" "stsServiceAddress" stringLiteral:ITFStringLiteral ";" "registries" "{" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "}" ";" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig accessPolicy:ITFAccessPolicy "}") | (("EDCUsage"? schemaVarName:Name| "EDCUsage" schemaVarName:Name?) "[[" ("edc" "usage" "{" "remoteAddress" stringLiteral:ITFStringLiteral ";" "remoteID" (name:TfIdentifierName (":" name:TfIdentifierName)*) ";" "xAPIKey" stringLiteral:ITFStringLiteral ";" "stsServiceAddress" stringLiteral:ITFStringLiteral ";" "registries" "{" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "}" ";" eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig accessPolicy:ITFAccessPolicy "}") "]]");
+    "EDCUsage" schemaVarName:Name | ("edc" "usage" "{" (baseUsage:ITFBaseUsage| "remoteAddress" stringLiteral:ITFStringLiteral ";"| "remoteID" (name:TfIdentifierName (":" name:TfIdentifierName)*) ";"| "xAPIKey" stringLiteral:ITFStringLiteral ";"| "stsServiceAddress" stringLiteral:ITFStringLiteral ";"| "registries" "{" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "}" ";"| eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig| accessPolicy:ITFAccessPolicy)* "}") | (("EDCUsage"? schemaVarName:Name| "EDCUsage" schemaVarName:Name?) "[[" ("edc" "usage" "{" (baseUsage:ITFBaseUsage| "remoteAddress" stringLiteral:ITFStringLiteral ";"| "remoteID" (name:TfIdentifierName (":" name:TfIdentifierName)*) ";"| "xAPIKey" stringLiteral:ITFStringLiteral ";"| "stsServiceAddress" stringLiteral:ITFStringLiteral ";"| "registries" "{" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "}" ";"| eDCPushEndpointsConfig:ITFEDCPushEndpointsConfig| accessPolicy:ITFAccessPolicy)* "}") "]]");
 
   EDCUsage_Neg implements ITFEDCUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
     "not" "[[" eDCUsage:ITFEDCUsage "]]";
@@ -98,7 +98,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFOPCUAUsage? ReplacementOp rhs:ITFOPCUAUsage? "]]");
 
   OPCUAUsage_Pat implements ITFOPCUAUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "OPCUAUsage" schemaVarName:Name | ("opcua" "usage" "{" "supportedProtocols" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" ("qosMetrics" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";")? "securityPolicy" stringLiteral:ITFStringLiteral ";" "securityMode" stringLiteral:ITFStringLiteral ";" "authenticationMode" stringLiteral:ITFStringLiteral ";" accessPolicy:ITFAccessPolicy "}") | (("OPCUAUsage"? schemaVarName:Name| "OPCUAUsage" schemaVarName:Name?) "[[" ("opcua" "usage" "{" "supportedProtocols" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" ("qosMetrics" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";")? "securityPolicy" stringLiteral:ITFStringLiteral ";" "securityMode" stringLiteral:ITFStringLiteral ";" "authenticationMode" stringLiteral:ITFStringLiteral ";" accessPolicy:ITFAccessPolicy "}") "]]");
+    "OPCUAUsage" schemaVarName:Name | ("opcua" "usage" "{" (baseUsage:ITFBaseUsage| "supportedProtocols" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| ("qosMetrics" "[" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| "securityPolicy" stringLiteral:ITFStringLiteral ";"| "securityMode" stringLiteral:ITFStringLiteral ";"| "authenticationMode" stringLiteral:ITFStringLiteral ";"| accessPolicy:ITFAccessPolicy)* "}") | (("OPCUAUsage"? schemaVarName:Name| "OPCUAUsage" schemaVarName:Name?) "[[" ("opcua" "usage" "{" (baseUsage:ITFBaseUsage| "supportedProtocols" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| ("qosMetrics" "[" stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| "securityPolicy" stringLiteral:ITFStringLiteral ";"| "securityMode" stringLiteral:ITFStringLiteral ";"| "authenticationMode" stringLiteral:ITFStringLiteral ";"| accessPolicy:ITFAccessPolicy)* "}") "]]");
 
   OPCUAUsage_Neg implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
     "not" "[[" oPCUAUsage:ITFOPCUAUsage "]]";
@@ -109,26 +109,26 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
   OPCUAUsage_List implements ITFOPCUAUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IList =
     "list" ("<OPCUAUsage>")? schemaVarName:Name? "[[" oPCUAUsage:OPCUAUsage_Pat "]]";
 
-  BaseUsage_Rep implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IReplacement =
+  BaseUsage_Rep implements ITFBaseUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
     ("[[" lhs:ITFBaseUsage? ReplacementOp rhs:ITFBaseUsage? "]]");
 
-  BaseUsage_Pat implements ITFBaseUsage, ITFUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "BaseUsage" schemaVarName:Name | ("Usage" "{" "baseUrl" baseUrl:ITFStringLiteral ";" "endpoint" endpoint:ITFStringLiteral ";" "dataAddress" dataAddress:ITFStringLiteral ";" "dataSchemaAddress" schemaAddress:ITFStringLiteral ";" accessPolicy:ITFAccessPolicy "}") | (("BaseUsage"? schemaVarName:Name| "BaseUsage" schemaVarName:Name?) "[[" ("Usage" "{" "baseUrl" baseUrl:ITFStringLiteral ";" "endpoint" endpoint:ITFStringLiteral ";" "dataAddress" dataAddress:ITFStringLiteral ";" "dataSchemaAddress" schemaAddress:ITFStringLiteral ";" accessPolicy:ITFAccessPolicy "}") "]]");
+  BaseUsage_Pat implements ITFBaseUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
+    "BaseUsage" schemaVarName:Name | ("dataAddress" dataAddress:ITFStringLiteral ";" "dataSchemaAddress" schemaAddress:ITFStringLiteral ";") | (("BaseUsage"? schemaVarName:Name| "BaseUsage" schemaVarName:Name?) "[[" ("dataAddress" dataAddress:ITFStringLiteral ";" "dataSchemaAddress" schemaAddress:ITFStringLiteral ";") "]]");
 
-  BaseUsage_Neg implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.INegation =
+  BaseUsage_Neg implements ITFBaseUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
     "not" "[[" baseUsage:ITFBaseUsage "]]";
 
-  BaseUsage_Opt implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IOptional =
+  BaseUsage_Opt implements ITFBaseUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IOptional =
     "opt" "[[" baseUsage:ITFBaseUsage "]]";
 
-  BaseUsage_List implements ITFBaseUsage, IDSL4DataspacesTFPart, ITFUsage astimplements de.monticore.tf.ast.IList =
+  BaseUsage_List implements ITFBaseUsage, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IList =
     "list" ("<BaseUsage>")? schemaVarName:Name? "[[" baseUsage:BaseUsage_Pat "]]";
 
   AssetMetaData_Rep implements ITFAssetMetaData, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IReplacement =
     ("[[" lhs:ITFAssetMetaData? ReplacementOp rhs:ITFAssetMetaData? "]]");
 
   AssetMetaData_Pat implements ITFAssetMetaData, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "AssetMetaData" schemaVarName:Name | ("asset" "{" "title" title:ITFComplexName+ ";" ("description" description:ITFStringLiteral ";")? "publisher" publisher:TfIdentifierName+ ";" "sidiCodes" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "version" stringLiteral:ITFStringLiteral ";" "created" created:ITFStringLiteral ";" "modified" modified:ITFStringLiteral ";" "language" language:ITFDSL4Dataspaces_Language_Constant ";" "}") | (("AssetMetaData"? schemaVarName:Name| "AssetMetaData" schemaVarName:Name?) "[[" ("asset" "{" "title" title:ITFComplexName+ ";" ("description" description:ITFStringLiteral ";")? "publisher" publisher:TfIdentifierName+ ";" "sidiCodes" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";" "version" stringLiteral:ITFStringLiteral ";" "created" created:ITFStringLiteral ";" "modified" modified:ITFStringLiteral ";" "language" language:ITFDSL4Dataspaces_Language_Constant ";" "}") "]]");
+    "AssetMetaData" schemaVarName:Name | ("asset" "{" ("title" title:ITFComplexName+ ";"| "description" description:ITFStringLiteral ";"| "publisher" publisher:TfIdentifierName+ ";"| "sidiCodes" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| "version" version:ITFStringLiteral ";"| "created" created:ITFStringLiteral ";"| "modified" modified:ITFStringLiteral ";"| "language" language:ITFDSL4Dataspaces_Language_Constant ";")* "}") | (("AssetMetaData"? schemaVarName:Name| "AssetMetaData" schemaVarName:Name?) "[[" ("asset" "{" ("title" title:ITFComplexName+ ";"| "description" description:ITFStringLiteral ";"| "publisher" publisher:TfIdentifierName+ ";"| "sidiCodes" "[" (stringLiteral:ITFStringLiteral ("," stringLiteral:ITFStringLiteral)*)? "]" ";"| "version" version:ITFStringLiteral ";"| "created" created:ITFStringLiteral ";"| "modified" modified:ITFStringLiteral ";"| "language" language:ITFDSL4Dataspaces_Language_Constant ";")* "}") "]]");
 
   AssetMetaData_Neg implements ITFAssetMetaData, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.INegation =
     "not" "[[" assetMetaData:ITFAssetMetaData "]]";
@@ -143,7 +143,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
     ("[[" lhs:ITFDiscoveryData? ReplacementOp rhs:ITFDiscoveryData? "]]");
 
   DiscoveryData_Pat implements ITFDiscoveryData, ITFConfigurationElements, IDSL4DataspacesTFPart astimplements de.monticore.tf.ast.IPattern =
-    "DiscoveryData" schemaVarName:Name | ("discovery" "{" "linkedAssetID" assetID:ITFComplexName ";" "baseUrl" baseUrl:ITFStringLiteral ";" "endpoint" endpoint:ITFStringLiteral ";" "idType" idType:ITFDSL4Dataspaces_IdType_Constant ";" assetMetaData:ITFAssetMetaData "}") | (("DiscoveryData"? schemaVarName:Name| "DiscoveryData" schemaVarName:Name?) "[[" ("discovery" "{" "linkedAssetID" assetID:ITFComplexName ";" "baseUrl" baseUrl:ITFStringLiteral ";" "endpoint" endpoint:ITFStringLiteral ";" "idType" idType:ITFDSL4Dataspaces_IdType_Constant ";" assetMetaData:ITFAssetMetaData "}") "]]");
+    "DiscoveryData" schemaVarName:Name | ("discovery" "{" ("linkedAssetID" assetID:ITFComplexName ";"| "baseUrl" baseUrl:ITFStringLiteral ";"| "endpoint" endpoint:ITFStringLiteral ";"| "idType" idType:ITFDSL4Dataspaces_IdType_Constant ";"| assetMetaData:ITFAssetMetaData)* "}") | (("DiscoveryData"? schemaVarName:Name| "DiscoveryData" schemaVarName:Name?) "[[" ("discovery" "{" ("linkedAssetID" assetID:ITFComplexName ";"| "baseUrl" baseUrl:ITFStringLiteral ";"| "endpoint" endpoint:ITFStringLiteral ";"| "idType" idType:ITFDSL4Dataspaces_IdType_Constant ";"| assetMetaData:ITFAssetMetaData)* "}") "]]");
 
   DiscoveryData_Neg implements ITFDiscoveryData, IDSL4DataspacesTFPart, ITFConfigurationElements astimplements de.monticore.tf.ast.INegation =
     "not" "[[" discoveryData:ITFDiscoveryData "]]";
@@ -252,7 +252,7 @@ grammar DSL4DataspacesTR extends de.monticore.types.tr.MCBasicTypesTR, de.montic
 
   interface ITFDSL4Dataspaces_Language_Constant;
 
-  interface ITFBaseUsage extends ITFUsage astextends de.monticore.tf.ast.ITFElement;
+  interface ITFBaseUsage astextends de.monticore.tf.ast.ITFElement;
 
   interface ITFOPCUAUsage extends ITFUsage astextends de.monticore.tf.ast.ITFElement;
 

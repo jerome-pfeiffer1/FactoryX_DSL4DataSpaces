@@ -26,7 +26,7 @@ public class DSL4DataspacesParserInfo {
   protected static Set<Integer> statesWithUsageNameMCQualifiedName = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameMCVoidType = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameMCType = Collections.emptySet();
-  protected static Set<Integer> statesWithUsageNameName = new HashSet<>(Arrays.asList( 288, 301, 305, 487, 491, 571 ));
+  protected static Set<Integer> statesWithUsageNameName = new HashSet<>(Arrays.asList( 288, 301, 305, 504, 508, 604 ));
   protected static Set<Integer> statesWithUsageNameConfigurationElements = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameAssetID = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameBaseUrl = Collections.emptySet();
@@ -34,12 +34,14 @@ public class DSL4DataspacesParserInfo {
   protected static Set<Integer> statesWithUsageNameAssetMetaData = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameTitle = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameDescription = Collections.emptySet();
-  protected static Set<Integer> statesWithUsageNamePublisher = new HashSet<>(Arrays.asList( 354 ));
+  protected static Set<Integer> statesWithUsageNamePublisher = new HashSet<>(Arrays.asList( 362 ));
   protected static Set<Integer> statesWithUsageNameStringLiteral = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameVersion = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameCreated = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameModified = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameDataAddress = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameSchemaAddress = Collections.emptySet();
+  protected static Set<Integer> statesWithUsageNameBaseUsage = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameAccessPolicy = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameEDCPushEndpointsConfig = Collections.emptySet();
   protected static Set<Integer> statesWithUsageNameComplexName = Collections.emptySet();
@@ -216,6 +218,14 @@ public class DSL4DataspacesParserInfo {
     return statesWithUsageNameStringLiteral.contains(state);
   }
 
+  public static boolean stateHasUsageNameVersion(int state){
+    return getDelegate()._stateHasUsageNameVersion(state);
+  }
+
+  protected boolean _stateHasUsageNameVersion(int state){
+    return statesWithUsageNameVersion.contains(state);
+  }
+
   public static boolean stateHasUsageNameCreated(int state){
     return getDelegate()._stateHasUsageNameCreated(state);
   }
@@ -246,6 +256,14 @@ public class DSL4DataspacesParserInfo {
 
   protected boolean _stateHasUsageNameSchemaAddress(int state){
     return statesWithUsageNameSchemaAddress.contains(state);
+  }
+
+  public static boolean stateHasUsageNameBaseUsage(int state){
+    return getDelegate()._stateHasUsageNameBaseUsage(state);
+  }
+
+  protected boolean _stateHasUsageNameBaseUsage(int state){
+    return statesWithUsageNameBaseUsage.contains(state);
   }
 
   public static boolean stateHasUsageNameAccessPolicy(int state){

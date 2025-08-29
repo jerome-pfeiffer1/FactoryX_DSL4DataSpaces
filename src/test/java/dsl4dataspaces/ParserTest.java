@@ -15,7 +15,7 @@ public class ParserTest {
     @Test
     public void testDataSpaceModel() throws IOException {
         DSL4DataspacesParser parser = new DSL4DataspacesParser();
-        Optional<ASTDataSpaceConnectorConfiguration> parse = parser.parse("src/test/resources/parser/valid/InnoWindow2.dsc");
+        Optional<ASTDataSpaceConnectorConfiguration> parse = parser.parse("src/test/resources/parser/valid/InnoWindow.dsc");
         Assert.assertTrue(parse.isPresent());
     }
 }
